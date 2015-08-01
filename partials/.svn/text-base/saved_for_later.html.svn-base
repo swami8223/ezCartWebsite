@@ -1,0 +1,23 @@
+<div class="savedForLaterc">
+	<h2>Saved for Later</h2>
+	<ul id="saveList" >
+		<li ng-repeat = "saved in saveforlater track by $index">
+		<div>
+			<div class="news_picc" >
+				<img src="img/{{saved.articleimage}}"/>
+				<div class="newspic_inner">
+					<img src="img/savedforlater_overicon.png" ng-click="redirect_details();" alt="{{saved.providerimage}}"/>
+				</div>
+			</div>
+			<div class="savedLaterContent" ng-click="redirect_details(saved.catindex,saved.articleindex,saved.provider);">
+				{{saved.articleheadline}}
+			</div>
+			<div id="saveicon_sfl" class="favicon{{saved.catindex}}{{saved.articleindex}}{{saved.provider}}" ng-click="deleteSaveFavourite(saved.catindex,saved.articleindex,saved.provider)">
+				
+			</div>
+		</div>
+		</li>
+	
+		
+	</ul>
+</div>

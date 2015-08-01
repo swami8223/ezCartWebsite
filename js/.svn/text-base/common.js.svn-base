@@ -1,0 +1,103 @@
+/*! 
+ * common.js
+ * All common functionality v1 by Jisha
+ * Copyright 2014 Tata Elxsi.
+ * Review tool used: jslint,dev tool chrome and plugins of sublime and notepad++ editor -->
+ * Testing tool used: Karma for unit testing, Protractor for End to End testing
+ * Reviewed by  Sanoop
+ 
+ * Usage steps below
+ * 1. Include this file in index.html
+
+ *
+ * Context usage: "News" 
+ */
+
+/*!
+ * Change log
+ * V1 : Base code
+ /*! 
+ * commonview.js
+ * All common functionality v1 by Jisha
+ * Copyright 2014 Tata Elxsi.
+ * Review tool used: jslint,dev tool chrome and plugins of sublime and notepad++ editor -->
+ * Testing tool used: Karma for unit testing, Protractor for End to End testing
+ * Reviewed by  Sanoop
+ 
+ * Usage steps below
+ * 1. Include this file in index.html
+
+ *
+ * Context usage: "JLR News App" 
+ */
+'use strict';
+/*!
+ * Change log
+ * V1 : Base code
+ */
+ var current_theme;
+ var current_url;
+ var show_grid = true;
+ var backKey = function ()
+		{	
+			$scope.bgChangeCacheOrNoIntenet	= true;	
+			var currentUrl=$location.path();
+			var newurl="/CI_Menu";
+			var enumLength = backBtnEnum.length;
+	        var selectedIndex1 = selectIndex.toString();
+			for(var i=0; i<enumLength; i++){
+				
+					if(currentUrl == backBtnEnum[i].currentUrl && selectedIndex1 == backBtnEnum[i].selectIndex)
+					{
+						
+					  newurl = backBtnEnum[i].newUrl;
+					  selectIndex=backBtnEnum[i].newSelectIndex;
+					  break;
+
+					}
+			    }
+			
+		   if(newurl=="/CI_Menu")
+			{
+				/*exit the application*/
+				return false;
+			}
+			else
+			{
+				
+				cacheService.put("history",newurl);
+				
+				$location.path(newurl);
+				
+				$scope.$apply();
+				return true;
+			}
+		};
+
+
+var commonObj={
+	"favourite_list_max":10,
+	"favourite_list_min":0,
+	"domainName":"stage.jlr-sgw.appcarousel.com/",
+	"appId":"",
+	"appVersion":"",
+	"apiVersion":"1.1",
+	"timeout":3000,
+	"autoRefreshTimeOut": 1800000,
+	"maxFind":10,
+	"tempUnit":'C',
+	"measurement":'imperial',
+	"current_city_fav":"tel-non-favorite",
+	"sdkVersion":"5.10",
+	"DEMO":"YES",
+	"MYLOC_LAT" : 52.1850049,
+	"MYLOC_LONG" : -1.467891,
+	"DEST_LAT" : 51.507351,
+	"DEST_LONG" : -0.127758
+};
+var folderName="partials";
+var cePlatform=false;
+var ceSideMenuOpen=0;
+
+
+

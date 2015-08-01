@@ -1,0 +1,53 @@
+
+
+
+
+
+<div class="boxedlayout">
+
+<div id="listiingPage" style="float:left;margin-top:49px;width: 20%;" ng-include ="'partials/menu.html'"></div>
+
+<div id="cartInfo" >
+		
+			<!-- TITLE BEGINS -->
+<title>Cart info</title>
+<h2> Cart Info</h2>
+
+<div class="fright">
+	<p>Total number of products:<span> {{cartList.itemsLength}}</span></p>
+
+</div>
+	<ul class="row cleardiv ulTable tabheader" ng-init="intializeCart()">
+  <li class="col-md-1">Si.no</li>
+  <li class="col-md-2">Name</li>
+  <li class="col-md-2">Image</li>
+  <li class="col-md-2">single Price</li>
+  <li class="col-md-2">Qty</li>
+  <li class="col-md-2">Price</li>
+
+</ul>
+
+	<ul class="row cleardiv ulTable" ng-repeat="cartitem in cartList.items track by $index">
+
+
+  <li class="col-md-1">{{$index + 1}}</li>
+  <li class="col-md-2">{{cartitem.ProductName}}</li>
+ <li class="col-md-2"><img width="55" height="37" ng-src="{{domainurl}}{{cartitem.ImageUrl}}" fallback-src="img/default.png" loading-src="img/default.png" class="attachment-post-thumbnail wp-post-image" alt="163_1"/></li>
+    <li class="col-md-2">{{cartitem.Price}}</li>
+ <li class="col-md-2" ><input type="text" class="qty" placeholder="qty" ng-model="cartitem.qty" value="cartitem.qty" ng-if="cartitem.qty != null"></input> <input type="text" class="qty" placeholder="qtysdf" ng-model="cartitem.qty" value="1" ng-if="cartitem.qty == null"></input></li>
+<li ng-if='cartitem.qty != null && cartitem.qty != ""'class="col-md-2"  >{{cartitem.qty * cartitem.Price}}</li>
+<li ng-if='cartitem.qty == null || cartitem.qty == ""'class="col-md-2"  >Please enter quantity</li>
+	</ul>
+<input type="submit" value="checkout" class="fright cleardiv checkout"></input>
+
+		</div>	
+
+
+
+	</div>
+
+
+
+
+
+	<div ng-include ="'partials/footer.html'"></div>

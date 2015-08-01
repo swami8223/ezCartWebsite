@@ -1,0 +1,63 @@
+  
+
+<div style="" class="providerslist">
+			<div class="cnw_mews">
+				<div class="cnw_mews_left">
+					<ul>
+						<li class="{{provider}}_color_header"><a href="#Listing" ><img src="img/{{providerimage}}"></a></li>
+					</ul>
+					
+				</div>
+				<div class="cnw_mews_right">
+					<div class="category detail_top_category {{provider}}_color_header">
+						<ul>
+						 <li>
+						    
+                            <a>{{category.categoryname}}</a>
+                        </li>
+						</ul>
+						<div class="search_icon"></div>
+					</div>	
+					
+				</div>
+			</div>	
+			<div class="cnw_mews">	
+				<div class="cnw_mews_left newslist_icon detailpage_icon">
+					<ul>
+						<li><div class="refresh_icon"></div></li>
+						<li ng-click="markSaveFavourite(categoryindex, $root.articleIndex,  providername,providerimage,article.headline,article.image)" ><div id="{{!fav ? 'saveicon' : 'not_saveicon'}}" class="favo-icon-{{categoryindex}}{{$root.articleIndex}}"></li>
+						<li><div class="video_icon"></div></li>
+					
+					</ul>
+					
+				</div>
+				
+				<div class="cnw_mews_right">
+					<div  class="news_list newsdetailspage">
+				
+						<ul id="favouritesScroll" class="scroll" >
+						
+						<li>	
+						  <div class="article_detail">
+							<div class="article_topleft">{{article.headline}}
+								
+							</div>	
+							<div class="article_topright">
+								<a><div class="share_icon"></div></a>
+								<img src="img/{{article.image}}">
+							</div>
+						  </div>	
+                            
+							<div class="full_description">{{article.description}}</div>
+                        </li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+				
+				
+				
+			</div>
+		  </div>
+		 

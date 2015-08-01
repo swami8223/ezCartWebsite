@@ -1,0 +1,100 @@
+/*! 
+ * app.js
+ * Routing functionality ,Run function which triggers on app launch ,event handling functionality , JSon Object to String Function
+ * Copyright 2014 Tata Elxsi.
+ * Review tool used: jslint,dev tool chrome and plugins of sublime and notepad++ editor -->
+ * Testing tool used: Karma for unit testing, Protractor for End to End testing
+
+ * Usage steps below
+ * 1. Include this file in index.html
+
+ *
+ * Context usage: "News App" 
+ */
+'use strict';
+
+var app = angular.module( "News", ['ngTouch','ngRoute','ngAnimate','angular-carousel','ngDraggable', 'jlrNewsApp.sdkservice'] );	
+app.config(['$routeProvider',function($routeProvider,SDKService) {
+			$routeProvider
+				.when('/Listing', {
+				templateUrl: 'partials/NewsListing.html',
+				controller: 'NewsStandCtrl'			})
+				.when('/articledetail', {
+				templateUrl: 'partials/ArticleDetails.html',
+				controller: 'NewsDetailCtrl'			})
+				.when('/AddCategory', {
+				templateUrl: 'partials/Add_Category.html',
+				controller: 'AddCategory'			})
+				.when('/MyNews', {
+				controller: 'MyNewsCtrl',
+				templateUrl: 'partials/MyNews.html'
+							})
+				.when('/SavedForLater', {
+				templateUrl: 'partials/saved_for_later.html',
+				controller: 'SavedForLaterCtrl'			})
+				.when('/', {
+				templateUrl: 'partials/ProvidersList.html',
+				controller: 'NewsCtrl' })
+				.otherwise({
+					redirectTo: '/'
+				
+			});
+
+			
+			
+			 //RHD & LHD
+      CI.Utils.DataStorage.getVehicleInfo(function(data){
+	  
+         if (data.result['steering-wheel-position'] != undefined) {
+            if (data.result['steering-wheel-position'] == 1) {
+              if(CI.System.Core.isRunningOnCEDevice() == false){
+                $('body').append('<link rel="stylesheet" href="css/rhd.css" type="text/css" />');
+              }       
+           }
+          };
+        },function (err){
+        CI.Utils.Logger.log('FlightTracker getVehicleInfo error: ' + JSON.stringify(err));
+      });
+			
+		}]); 
+		
+		
+
+//Function executes when app launches to initialize the backbutton functionality and capture vehicle status
+app.run(function($rootScope,backButtonFactory) {
+
+
+angular.element(document).ready(function () {
+
+	
+	backButtonFactory.backButtonCallBack();	
+	$rootScope.$on('$routeChangeSuccess', function(evt, absNewUrl, absOldUrl) {
+        $rootScope.prevURL = absOldUrl;
+        $rootScope.newURL = absNewUrl;
+    });
+
+/*	var manifest = CI.System.Core.getManifestData();
+    APP_CONSTANTS.APP_VERSION = manifest.version;
+    APP_CONSTANTS.APP_UUID = manifest.id; 
+
+	ciLog(APP_CONSTANTS.APP_NAME,fileName,'flightapp.run','Exiting');
+      $('body').css('display','block');
+
+      	if(APP_CONSTANTS.GRID_ENABLE==1)
+		{
+			$('.gridButton').css('display','block');
+		}
+		else
+		{
+			$('.gridButton').css('display','none');
+		} */
+
+		
+		
+		 //RHD & LHD
+      
+
+    });
+
+});	
+

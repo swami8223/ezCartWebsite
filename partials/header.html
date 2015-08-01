@@ -1,0 +1,41 @@
+ <header ng-controller="HeaderCtrl">
+    
+<nav id="wow-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href='index.html'>
+          <img alt="Kailo" src="assets/img/logo.png"/>
+          </a>
+        </div>
+        <!-- Menu -->
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse" >
+          <ul id="menu-top" class="nav navbar-nav ">
+            <li><a href="shop.html">signin/account</a></li>
+            <li><a href="myaccount.html">order history</a></li>
+            <li><a href="checkout.html">weekly add</a></li>
+            <li><a href="blog.html">giftcard</a></li>
+            <li> <a class="g-signin2" data-onsuccess="onSignIn">Google+</a>  </li> 
+
+          </ul>
+        </div>
+                  <div class="cartblock"><i class="fa fa-shopping-cart"></i> <a ng-href="#/cart" ng-if="cartItemTotal"> Cart ({{cartItemTotal}})</a>
+
+                <span ng-if="cartItemTotal == undefined || cartItemTotal == 0">Cart is empty</span>
+
+                  <div class="cartList">
+                    
+                    
+                  </div>
+
+                </div>
+      </div>
+    </nav>
+
+</header>

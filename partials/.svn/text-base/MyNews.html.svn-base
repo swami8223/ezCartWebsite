@@ -1,0 +1,81 @@
+<div class="news_leftc">
+	<a href="#AddCategory"><div class="add_but"></div></a>
+</div>	
+<div class="news_rightc">
+	<div class="newsRightTop">
+	<div class="mainmenu">
+		
+		<ul>
+		  <li><a href="" data-i18n="Live">Bulletins</a></li>
+		  <li ><a href="#" data-i18n ="Newsstand">News Stand</a></li>
+		  <li class="activemenu"><a href="#MyNews" data-i18n ="My News">My News</a></li>
+		</ul>
+			 
+	</div>
+	 <div class="edit_but"  ></div>
+	 <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)" class="delete_but">
+       
+      </div>
+	</div> 
+<div class="wrapper NewsProvidercontent">		
+		<div  class="providers mynews_list">	
+		<div class="provider_container" >
+					
+			   
+			     <div ng-if="!mynews.length > 0">
+				 <div class="favourite_text">
+				<div class="favourite_text1">To add favourite news categories, </div>
+				<div class="favourite_text2">tap </div><div class="favourite_text_img" style="display:inline-block;"></div> <div class="favourite_text3">icon where displayed</div>
+				 </div>
+				 <div class="save_text">
+				<div class="save_text1">To save articles to read later, </div> 
+				<div class="save_text2">tap </div><div class="save_text_img" style="display:inline-block;"></div> <div class="save_text3">icon where displayed</div>
+				</div>
+				</div>
+			  
+			   <div ng-if="mynews.length > 0">
+			 
+					<button ng-click="carouselIndex2 = carouselIndex2 - 1" ng-disabled="carouselIndex2 == 0" class="prev-btn" > </button>
+                   
+                    <ul rn-carousel rn-carousel-controls rn-carousel-index="carouselIndex2" rn-carousel-buffered class="carousel1 draglist">
+					 
+                        <li ng-repeat="slide in slidesiteration" ng-class="'id-' + slide.id" ng-init="sectionIndex = $index">
+							<div style="position:relative;" id="icon" ng-repeat="data in mynews.slice((slide*6),((slide+1)*6))" ng-drop="true" ng-drop-success="onDropComplete((sectionIndex*6) + $index, $data,$event,data.provider,data.category,data.service)" value="{{ (sectionIndex*6) + $index }}" >
+							
+							
+							<div ng-drag="true" ng-drag-data="data" class="draggs ">
+							<img class="longpress" src="img/{{data.articleimg}}" width="100" height="100">
+							<div class="mynews_bottom_title"><div class="title_text">{{data.catname}}</div></div>
+							<div class="mynews_right_icon"><img src="img/{{data.providerimage}}"></div> 
+							</div>
+							
+							
+							
+							</div>
+                        </li>
+						
+						
+						
+						
+					
+						
+						
+						
+                    </ul>
+					<button ng-click="carouselIndex2 = carouselIndex2 + 1" ng-disabled="carouselIndex2 == slidesiteration.length-1" class="next-btn" >  </button>
+
+                    <div rn-carousel-indicators ng-if="mynews.length > 1" slides="slides2" rn-carousel-index="carouselIndex2"></div>
+					</div>
+                </div>
+        
+		
+				
+		</div>	
+		
+		
+	</div>	
+		
+
+	
+	
+	

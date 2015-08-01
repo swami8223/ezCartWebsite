@@ -1,0 +1,42 @@
+  
+
+<div style="" class="providerslist add_category">
+			<div class="cnw_mews">
+				<div class="cnw_mews_left ">
+					<ul>
+						<li class="CNN_color_header"><a><img src="img/cnn-logo.png"></a></li>
+						
+					
+					</ul>
+					
+				</div>
+
+
+				<div class="cnw_mews_right">
+					<div class="category detail_top_category CNN_color_header">
+						<ul>
+						 <li>
+						    
+                            <a>Categories</a>
+                        </li>
+						</ul>
+					</div>	
+					
+					</div>
+					
+					<div  class="news_list newsdetailspage">
+				
+						<ul id="favouritesScroll" class="scroll addcategory_list" >
+						
+						<li ng-repeat="category in categories">	
+						  <div ng-click="markFavouriteCat($index)" class="favico{{$index}}" id="favicon"></div>
+						  <a>{{category.categoryname}}</a>
+                        </li>
+						
+						</ul>
+						
+					
+				</div>
+			</div>
+		  </div>
+		 

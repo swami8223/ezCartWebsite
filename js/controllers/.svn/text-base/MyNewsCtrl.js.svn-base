@@ -1,0 +1,146 @@
+app.controller("MyNewsCtrl",
+            function( $scope, $http,$rootScope, $timeout ,SDKService) {
+
+			
+			
+			
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			$scope.nodata = false;
+var favdata = localStorage.getItem("favStoredJson");
+if(favdata)
+{
+var favdataarr = JSON.parse(favdata);
+}
+//console.log(favdataarr.favStored.length);
+
+var saveforlaterdata = localStorage.getItem("savedForLaterJson");
+	if(saveforlaterdata)
+	{
+
+		var saveforlaterdataarr = JSON.parse(saveforlaterdata);
+
+
+		if(saveforlaterdataarr.savedForLater.length > 0)
+		{
+
+		favdataarr.favStored.unshift({"category":"","catname":"Saved for later","favorite":true,"providerimage":"Night/save-for-later.png","articleimg":"img-1.png",'service':'savedforlater'});
+		}
+
+	}
+
+				if(favdataarr)
+				{
+				$scope.mynews = favdataarr.favStored
+				}
+				else
+				{
+				$scope.mynews = "";
+				}
+				console.log($scope.mynews);
+				var totalslide = $scope.mynews.length/6;
+
+				$scope.slidesiteration = [];
+				for(i=0;i<totalslide;i++)
+				{				
+				$scope.slidesiteration.push(i);
+				}
+					$scope.slides2 = [];
+				   addSlides($scope.slides2, $scope.slidesiteration.length);	
+			
+			
+			/* var responsePromise = $http.get("simulation/mynews.json");
+                  responsePromise.success(function(data, status, headers, config) {				
+				  $scope.mynews = data;	
+			  
+				  var totalslide = $scope.mynews.length/6;
+				  
+				  
+				
+				 
+                });
+                responsePromise.error(function(data, status, headers, config) {                   
+					$("#providers").append("<div style='color:#fff;'>No providers available..</div>");
+                });	*/		
+				
+				
+			//Slide code start	
+			function getSlide(target, style) {
+                var i = target.length;
+                return {
+                    id: (i + 1),
+                   odd: (i % 2 === 0)
+                };
+            }
+            function addSlide(target) {
+                target.push(getSlide(target));
+            };            
+            $scope.carouselIndex2 = 0;
+            function addSlides(target,  qty) {
+                for (var i=0; i < qty; i++) {
+                    addSlide(target);
+                }
+            }
+			//Slider cide end
+			$scope.droppedObjects1 = [];
+			
+			$scope.onDropComplete = function (index, obj, evt,provider,catindex,service) {
+
+                    var otherObj = $scope.mynews[index];
+                    var otherIndex = $scope.mynews.indexOf(obj);
+					console.log(otherObj);
+                    $scope.mynews[index] = obj;
+                    $scope.mynews[otherIndex] = otherObj;
+					
+					$(".delete_but").css("display","none");
+					$(".edit_but").css("display","block");
+					if(index == otherIndex)
+					{
+						if(service == 'category')
+						{
+						$rootScope.provider = provider;
+						$rootScope.catindex = catindex;
+						window.location.hash = 'Listing';
+						}
+						else
+						{
+						window.location.hash = 'SavedForLater';
+						}
+					}
+                }
+				
+			
+
+        $scope.onDropComplete1=function(data,evt){
+		
+		
+            var index = $scope.mynews.indexOf(data);
+            if (index > -1)
+			{
+           $scope.mynews.splice(index,1);
+			$scope.droppedObjects1.push(data);
+			$scope.mynews.$apply();
+
+			}
+        }
+
+			
+		
+
+				
+				}) 
+				
+				
+				
+				

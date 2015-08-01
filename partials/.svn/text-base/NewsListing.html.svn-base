@@ -1,0 +1,54 @@
+<div style="" class="providerslist">
+			<div class="cnw_mews">
+				<div class="cnw_mews_left">
+					<ul>
+						<li class="{{provider}}_color_header"><img src="img/{{providerimage}}"></li>
+					
+
+					</ul>
+					
+					
+					
+				</div>
+				<div class="cnw_mews_right">
+				<div class="category carousel-demo {{provider}}_color_header">
+					<div style="float:left;width:86%;">
+					 <button ng-click="currentSport = currentSport - 1" ng-disabled="currentSport == 0" class="prev-btn"> </button>
+						<ul  rn-carousel rn-carousel-controls rn-carousel-index="currentSport"  class="carousel1">
+						 <li ng-repeat="category in categories" ng-click="setcatInd($index)" ng-class="{cnnbtnactive:$index==catindex}">
+						    
+                            <a>{{category.categoryname}}</a>
+                        </li>
+						</ul>
+						<button ng-click="currentSport = currentSport + 1" ng-disabled="currentSport >= categories.length-3" class="next-btn">  </button>
+						</div>
+						<div class="search_icon"></div>
+					</div>
+				</div>	
+					
+				</div>
+<div class="cnw_mews">			
+				
+				
+				<div class="cnw_mews_left newslist_icon">
+				<ul>
+					<li><div class="refresh_icon"></div></li>
+						<li ng-click="markFavourite(catindex, categories[catindex].categoryname,provider,providerimage,categories[catindex].articles[0].image,'category')" ><div id="{{!fav ? 'favicon' : 'not_favicon'}}" class="favo-icon-{{catindex}}"> </div></li>
+						<li><div class="video_icon"></div></li>
+				</ul>
+				</div>
+				
+				<div class="cnw_mews_right newslist_content">
+					
+					<div class="news_list">
+						<ul id="favouritesScroll" class="scroll newslistingitems">
+						
+						<li ng-repeat="article in categories[catindex].articles">
+						<a href="#articledetail" ng-click="getsingleArticle({{$index}},{{catindex}})">  <img src="img/{{article.image}}"></img>
+                            <span>{{article.headline}}</span></a>
+                        </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		  </div>

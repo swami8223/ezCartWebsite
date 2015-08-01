@@ -1,0 +1,18 @@
+	<div class="mainmenu">
+		<ul>
+		  <li><a href="" data-i18n="Live">Bulletins</a></li>
+		  <li class="activemenu"><a href="" data-i18n ="Newsstand">News Stand</a></li>
+		  <li><a href="#MyNews" data-i18n ="My News">My News</a></li>
+		</ul>
+	</div>
+<div class="wrapper NewsProvidercontent">		
+		<div  class="providers reflect">	
+		<div class="provider_container">
+			 <div id="icon" ng-repeat="provider in providers">
+			 <a href="#Listing">
+			 <img src="img/{{provider.name}}" ng-click="getprovider(provider.id)"></a></div>
+			
+		</div>	
+		
+		</div>
+	</div>

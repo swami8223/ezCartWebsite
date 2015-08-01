@@ -1,0 +1,166 @@
+
+app.controller("NewsDetailCtrl",function( $scope, $http,$rootScope, $timeout, SDKService) {
+	var articleIndex=$rootScope.articleIndex;	
+	var categoryindex=$rootScope.categoryindex;	
+	$scope.providername = $rootScope.provider;
+	
+	var responsePromise = $http.get("simulation/"+$rootScope.provider+".json");
+                responsePromise.success(function(data, status, headers, config) {
+						$scope.providerimage = data.logo;				
+                    	$scope.category=data.categories[categoryindex];
+						$scope.article=data.categories[categoryindex].articles[articleIndex];
+						$scope.categoryindex = categoryindex;
+                        $scope.articleIndex = articleIndex;
+                        selectSavedFav($scope);						
+
+                    			  
+                });
+                responsePromise.error(function(data, status, headers, config) {                   
+				alert("error");
+					$("#providers").append("<div style='color:#fff;'>No providers available..</div>");
+                });
+				
+			$.getScript("js/scroll/jquery.mCustomScrollbar.concat.min.js",function(){
+				//scroll management
+					 $(".news_list").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					},
+					advanced : {
+						updateOnContentResize : true,
+						contentTouchScroll: true,
+						 moveDragger:true
+					}
+				}); 
+				
+				
+				
+			}); 
+	$scope.markSaveFavourite = function(catindex, articleindex, provider,providerimage,articleheadline,articleimage) {
+         SDKService.checkUserLoggedIn(
+                    function(loggedInRes){      
+                            if (loggedInRes.result && loggedInRes.result['active-user']){
+                                $scope.saveFavAfterLogin(catindex, articleindex, provider,providerimage,articleheadline,articleimage);
+                            }
+                            else{
+                                
+                                if(window.cePlatform) {
+                                        if (loggedInRes && loggedInRes['id']) {
+                                            $scope.saveFavAfterLogin(catindex, articleindex, provider,providerimage,articleheadline,articleimage);
+                                        } else {
+                                        customPopup.showtimerPopup({
+                                        popupType: "timer", // popup type
+                                        popupTitle: 'Login', // popup title
+                                        popupMessage: 'Please login to access saved for later news', // popup message
+                                        popupTimer: 2, // used only for timer popup
+                                    // call back function used in 2WayDecision popup onclick of 
+                                    });
+                                    }
+                                } else {                
+
+                                    SDKService.tryToLogin("favourites",function(response) {
+                                    var resJSONData = JSON.parse(response["response-data"]);
+                                    //CI.Utils.Logger.log('Login APP response data ' + JSON.stringify(response));
+                                        if (resJSONData["user-id"] !== undefined) {     
+                                            $scope.saveFavAfterLogin(catindex, articleindex, provider,providerimage,articleheadline,articleimage);
+                                            
+                                        }
+                                    }, function(errRes) {
+                                        //CI.Utils.Logger.log('NewsStandCtrl: Error response got while login');
+                                        SDKService.showPopup({
+                                            popupType: "timer", // popup type
+                                            popupTitle: "Unable to connect "+articleheadline+" not added to Saved for later", // popup message // popup title
+                                            popupMessage: "Unable to connect "+articleheadline+" not added to Saved for later", // popup message
+                                            popupTimer: 2, // used only for timer popup
+                                        });
+                                    }); 
+
+                                }
+                            }   
+                    });  
+        
+ 
+    };
+$scope.saveFavAfterLogin = function(catindex, articleindex, provider,providerimage,articleheadline,articleimage) {
+    var jsonStr = localStorage.getItem("savedForLaterJson");
+ 
+        if (!jsonStr)
+            jsonStr = '{"savedForLater":[]}';
+        var obj = JSON.parse(jsonStr);
+        var iconClass = ".favo-icon-" + catindex + articleindex;
+        var cur_img = $(iconClass).attr('id');
+        var img_status = (cur_img == "saveicon" ? true : false);
+ 
+        if (img_status) { 
+            obj['savedForLater'].push({'catindex': catindex, 'articleindex': articleindex, 'provider': provider,'providerimage':providerimage,'articleheadline':articleheadline,'articleimage': articleimage});
+                if(obj['savedForLater'].length > 3){
+                   obj['savedForLater'].splice(0, 1);
+                }
+     
+        } else { 
+            removeSavedItem(obj.savedForLater, catindex, articleindex, provider);
+        }
+ 
+        jsonStr = JSON.stringify(obj);
+        localStorage.setItem("savedForLaterJson", jsonStr);
+        
+     
+        var img_status_o = img_status ? "load_favicon" : "saveicon";
+        $(".favo-icon-" + catindex + articleindex).attr('id', "load_favicon").addClass('news-favourite-update');
+       
+        $timeout(function() {
+            $(".favo-icon-" + catindex + articleindex).removeClass('news-favourite-update');
+            img_status_o = cur_img == "saveicon" ? "not_saveicon" : "saveicon";
+            $(".favo-icon-" + catindex + articleindex).attr('id', img_status_o);
+ 
+            selectSavedFav($scope);
+            if (img_status) { 
+                SDKService.showPopup({
+                    popupType: "timer", // popup type
+                    popupTitle: articleheadline+" added to Saved for later", // popup title
+                    popupMessage: articleheadline+" added to Saved for later", // popup message
+                    popupTimer: 2, // used only for timer popup
+                });
+            } else { 
+                    SDKService.showPopup({
+                    popupType: "timer", // popup type
+                    popupTitle: articleheadline+" deleted from Saved for later", // popup title
+                    popupMessage: articleheadline+" deleted from Saved for later", // popup message
+                    popupTimer: 2, // used only for timer popup
+                });
+            }
+
+        }, 800);
+    }
+});
+ 
+//function to remove a value from the json array
+var removeSavedItem = function (obj, val1, val2, val3) {
+    var c, found = false;
+    for (c in obj) { //console.log(obj[c]);
+        if (obj[c] == null) {
+            obj.splice(c, 1);
+        } else {
+            if (obj[c]["catindex"] == val1 && obj[c]["articleindex"] == val2 && obj[c]["provider"] == val3) {
+                obj.splice(c, 1);
+                break;
+            }
+        }
+    }
+ 
+}
+//function to save 
+var selectSavedFav = function ($scope) {
+    var jsonStr = localStorage.getItem("savedForLaterJson");
+    var jsonStr_i = JSON.parse(jsonStr);
+    if (jsonStr_i) {
+        var obj = jsonStr_i.savedForLater;
+        var c;
+        $scope.fav = false;
+        for (c in obj) {
+            if (obj[c]["catindex"] == $scope.categoryindex && obj[c]["articleindex"] == $scope.articleIndex && obj[c]["provider"] == $scope.provider) {
+                $scope.fav = true;
+            }
+        }
+    }
+}

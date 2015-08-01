@@ -1,0 +1,40 @@
+app.controller("AddCategory", function($scope, $http, $rootScope, $timeout ,SDKService) {
+
+
+ var responsePromise = $http.get("simulation/cnn.json");
+    responsePromise.success(function(data, status, headers, config) {
+        $scope.categories = data.categories;
+
+    });
+    responsePromise.error(function(data, status, headers, config) {
+        alert("error");
+       
+    });
+	
+	$.getScript("js/scroll/jquery.mCustomScrollbar.concat.min.js",function(){
+                //scroll management
+                     $(".news_list").mCustomScrollbar({
+                    scrollButtons:{
+                        enable:true
+                    },
+                    advanced : {
+                        updateOnContentResize : true,
+                        contentTouchScroll: true,
+                         moveDragger:true
+                    }
+                }); 
+                
+                
+                
+            }); 
+     $scope.markFavouriteCat = function(catindex) {
+        var cur_img = $(".favico" + catindex).attr('id');
+        var img_status = (cur_img == "favicon" ? 'not_favicon' : 'favicon');
+        $(".favico" + catindex).attr('id', "load_favicon").addClass('news-favourite-update');
+        $timeout(function() {
+            $(".favico" + catindex).removeClass('news-favourite-update');
+            $(".favico" + catindex).attr('id', img_status);
+          }, 800);
+    }
+
+});

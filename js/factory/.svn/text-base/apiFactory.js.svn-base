@@ -1,0 +1,75 @@
+//**********************************************************
+// FileName: apiFactory.js
+// Date: 18-May-2014
+// Version: 0.1
+// Wireframe Version: 11
+//**********************************************************
+
+
+'use strict'; 
+angular.module('jlrWeatherApp.apifactory', [])
+.factory('apiFactory', ['$resource',
+	function($resource){
+		var fileName = 'apifactory.js';
+		var apiFactory = {};	
+
+		apiFactory.invokeAPI = function(TYPE, qStrings, callBckFn,errorFn,city_name) {
+			ciLog(commonObj.APP_NAME,fileName,'invokeAPI','invokeAPI entering');
+			switch(TYPE)
+			{
+			 case 'weather':
+			 ciLog(commonObj.APP_NAME,fileName,'invokeAPI','case weather entering');
+			 apiFactory.getWeather(qStrings, callBckFn,errorFn);	
+			 break;
+			 case 'find':
+			 ciLog(commonObj.APP_NAME,fileName,'invokeAPI','case find entering');
+			 apiFactory.getCity(qStrings, callBckFn,errorFn,city_name);
+			 break;
+			 default:
+				callBckFn("error");
+			}	
+		}	
+
+
+	
+	apiFactory.getWeather = function(qStrings, callBckFn,errorFn) {
+		ciLog(commonObj.APP_NAME,fileName,'getWeather','getWeather jlr backend call');
+		var url = '/ad/we/today/v1.1/json?'+ $.param(qStrings);					
+		apiFactory.sendViaJLRBackEnd(url, 'GET', callBckFn,errorFn);
+	}
+	
+	apiFactory.getCity = function(qStrings, callBckFn,errorFn,city_name) {
+		ciLog(commonObj.APP_NAME,fileName,'getCity','getCity jlr backend call');
+		var url = '/ad/we/locations/v1.1/json/'+city_name+'?'+ $.param(qStrings);			
+		apiFactory.sendViaJLRBackEnd(url, 'GET', callBckFn,errorFn);
+	}
+	
+	
+	
+	
+	apiFactory.sendViaJLRBackEnd = function(url, method, callBckFn,errorFn) {
+		ciLog(commonObj.APP_NAME,fileName,'sendViaJLRBackEnd','sendViaJLRBackEnd Entering');
+		CI.System.Notifier.sendToJLRBackend({path: url, method: method},
+			function(obj, textStatus, jqXHR)
+			{
+				
+				//if (obj)
+				// CI.Utils.Logger.log('Result: ' + JSON.stringify(obj));
+				
+				callBckFn(JSON.stringify(obj));
+			},
+			function(obj)
+			{
+				
+				//if (obj)
+				//  CI.Utils.Logger.log('Failed to call method, error: ' + JSON.stringify(obj));
+				errorFn(obj);
+			}
+		);
+		ciLog(commonObj.APP_NAME,fileName,'sendViaJLRBackEnd','sendViaJLRBackEnd Exiting');
+	}
+	
+	return apiFactory 
+
+}]);
+

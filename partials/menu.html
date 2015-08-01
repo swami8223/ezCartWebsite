@@ -1,0 +1,51 @@
+
+
+
+    <div style="background-color: rgb(255, 255, 255);" id="navWrapper" ng-controller="MenuCtrl">
+<nav >
+        <div class="shopCategory"> shop by categories</div>
+
+
+    <div id="acdnmenu" ng-init="fetchMenu()"  class="menu" ng-class="showmenu"> 
+
+
+
+        <ul style="visibility: visible;" class="top menuhead">
+            <li ng-repeat = "menu in menudata" class="mainMenu" id="v_hm">
+
+              <div class="heading"><div class="arrowImage"></div>
+              {{menu.MenuName}}
+              </div>  
+            <ul class="sub" >
+                    <li class="sub2" ng-repeat="submenu in menu.SubMenu">
+
+                   
+
+                    <div ng-if = "submenu.ImageUrl != null">
+          <img  ng-href="#/products?menu={{submenu.MenuId}}&menuName={{submenu.MenuName}}"  class="menuImg" ng-src="{{domainurl}}{{submenu.ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/default.png">
+                    </div>
+                   
+
+                      <a ng-href="#/products?menu={{submenu.MenuId}}&menuName={{submenu.MenuName}}"   style="display: block;" class="link" >{{submenu.MenuName}}</a>
+
+
+
+                    <ul>
+                      <li  ng-repeat="submenu2 in submenu.subMenu">{{submenu2.MenuName}}</li>
+             
+                  
+       
+
+                    </ul>
+          
+                    </li>
+
+                </ul>
+                  <li style="height: 0px; overflow: hidden;" class="separator"></li>           
+              </li>
+
+
+          </ul>
+    </div>
+</nav>
+    </div>

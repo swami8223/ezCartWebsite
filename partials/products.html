@@ -1,0 +1,211 @@
+
+
+
+
+
+<div class="boxedlayout">
+
+<div id="listiingPage" style="float:left;margin-top:49px;width: 20%;" ng-include ="'partials/menu.html'"></div>
+
+<div class="shoppage">
+		
+			<!-- TITLE BEGINS -->
+	<div class="headerimage commonHeader" style="background-image: url(http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/2015/03/header.jpg);">
+				<div class="headercontent">
+					<div class="">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="fleft">
+									<h1>{{menuName}}</h1>
+								</div>
+								<div class="fright breadc">
+									<a href="index.html">Home</a> / {{menuName}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- TITLE ENDS -->
+			
+			<div class=" padbot30 productContent" >
+				<div class="row searchBlock">
+<div class="widget_wysija_cont" style="clear:both;">
+                  <form class="widget_wysija ng-pristine ng-valid">
+                    <p class="searchSpace col-md-3 fright">
+      <input type="text" name="" class="" title="" value="" ng-model="searchText"  placeholder="search in below items">
+                    <input class="" type="submit" value="Search">
+                      </p>
+                  </form>
+                </div>
+				</div>
+				
+				<div class="row">
+				<!-- MAIN CONTENT BEGINS -->
+<div class='col-md-2 sortOptions' id='sortOptions'>
+
+<p>Select brand</p>
+ 
+
+ <input ng-model='brand' value='{{brandList}}'>
+
+
+ <label class='brandlabel'  ng-repeat='products in productsdata  | unique: "BrandName" '>
+<input class='brandcheckbox'  groupname="brand"  checklist-change="sortBrand()"  type="checkbox" checklist-model="sortbrands.list"   checklist-value='products.BrandName'>{{products.BrandName}}</label> 
+
+
+
+</div>
+
+
+				<div class="col-md-12 productsMain">
+					<div class="wowitemboxlist"  ng-init="fetchProduct()">
+						<div class="wowitembox productId{{products.ProductId}}"  ng-repeat="products in productsdata | filter:searchText | filter:brandList">
+							<div class="wowitemboxinner" >
+								<div class="imagearea">
+			<img width="555" height="370" ng-src="{{domainurl}}{{products.ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif" class="attachment-post-thumbnail wp-post-image" alt="163_1"/>
+									<div class="caption">
+										<div class="blur">
+										</div>
+										<div class="caption-text">
+											<div class="captionbuttons">
+												<a ng-click="viewProduct(products)" class="captiondetails"><i class="fa fa-link"></i> View Details</a>
+											</div>
+
+											
+										</div>
+									</div>
+								</div>
+								<div class="notesarea">
+									<a ng-click="viewProduct(products)" title="{{products.ProductName}}">
+
+								
+                                       <div>
+                                       	
+                                       			<h2>
+										{{products.ProductName}}</h2>
+
+										<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
+										{{products.TamilName}}</h2> -->
+                                       </div>
+								
+										<div class="tags">
+											<div class="brand">{{products.BrandName}}</div>
+											 <div class="incart">inCart</div>
+											 <div class="utility">
+												<span class="favIcon noFav">&hearts;</span>
+												<span class="favtext">add to fav</span>
+											</div>
+										</div>
+                                     
+                                      
+					
+									</a>
+								
+									<div class="notesbottom">
+
+										
+										<div class="fleft">
+										<p class="mrp"><a class="price">{{products.Mrp}} Rs </a></span></p>
+										 <p class="amount"><a class="price "> {{products.Price}} Rs </a></p>
+										   
+										</div>
+									
+                                     
+
+										<div class="cart">
+											<div ng-if="products.IsStockAvailable == 'Y'"  class="edd-add-to-cart">
+												
+											<p class="fleft">
+											<label>Qty</label><input type="text" class="qty" placeholder="qty" ng-model="products.qty"></input>
+											</div>
+											</p>
+											<input ng-click="addtoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
+                                           
+											
+
+											<a ng-if="products.IsStockAvailable == 'N'"  class="edd-add-to-cart">
+												<span class="edd-add-to-cart-label">Out of Stock</span>
+											</a>
+
+										</div>
+										<div class="clearfix">
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- .wowitemboxinner-->
+
+
+                              <div class="loadingCurtain">
+                              	
+                              	<span class="loader">adding to cart</span>
+                              </div>
+
+
+						</div>
+						<!-- .wowitembox-->
+						
+							</div>	
+					</div>
+			
+					
+				<!-- MAIN CONTENT ENDS -->
+					
+				</div>				
+			</div>
+		</div>	
+
+
+
+	</div>
+
+<div class="popup">
+<div class="backdrop" ng-click="closeViewProduct()"></div>
+
+<div class="popupContainer">
+	<span class="close" ng-click="closeViewProduct()"></span>
+
+<div class="col-md-8">
+
+	<h2 ng-if="singleProductName != singleProductTamilName" >
+	{{singleProductName}}/{{singleProductTamilName}}</h2>
+
+	<h2 ng-if="singleProductName == singleProductTamilName" >
+		{{singleProductName}}</h2>
+
+<h2>Product of {{singleProductBrandName}} </h2>
+   <img ng-src="assets/img/01.jpg">
+
+<div class="col-md-4 price">
+ <h3> Price {{singleProductPrice}} Rs</h3>
+</div>
+
+<div class="col-md-3">
+<input class="wysija-submit wysija-submit-field edd-add-to-cart" type="submit" value="Add to Cart">
+</div>
+
+
+
+
+</div>
+<div class="col-md-4 description">
+
+<h3>Description</h3>
+
+<p>This is your item description. Add as many info for your buyers about this digital product.
+
+Easy Digital Downloads is built to be quick and simple to setup. After installation, you’re ready to go in just a couple of minutes! Simply enter your payment information, add your products and the rest is all a dream.
+
+Proin imperdiet cursus lacus, eu rutrum eros volutpat eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a purus sed sapien congue pharetra. Proin tellus ligula, tincidunt at ante in, suscipit pretium nulla. Fusce nec scelerisque turpis. Proin id efficitur tortor.
+
+Nullam nec augue nulla. Nunc quis diam ante. Nam sed feugiat nisl. Nunc eget lacus tincidunt, feugiat enim non, volutpat tellus. Vivamus at cursus mi. Vivamus eu placerat odio. Curabitur malesuada consectetur dui, quis mollis velit vulputate in. Ut molestie a libero eget aliquet. Pellentesque at turpis placerat, porta dolor eu, scelerisque nisl.</p>
+
+</div>
+
+</div>
+</div>
+
+
+
+	<div ng-include ="'partials/footer.html'"></div>

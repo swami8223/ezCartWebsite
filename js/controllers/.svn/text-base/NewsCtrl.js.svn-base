@@ -1,0 +1,22 @@
+app.controller("NewsCtrl",
+            function( $scope, $http,$rootScope) {			
+			 var responsePromise = $http.get("simulation/providers.json");
+                  responsePromise.success(function(data, status, headers, config) {				
+				  $scope.providers = data;	
+					$rootScope.providers = data;				  
+                });
+                responsePromise.error(function(data, status, headers, config) {                   
+					$("#providers").append("<div style='color:#fff;'>No providers available..</div>");
+                });
+					$scope.getprovider=function(id){
+				    $rootScope.provider=id;
+				};
+               
+				})
+				
+			
+				
+				
+	
+			
+		

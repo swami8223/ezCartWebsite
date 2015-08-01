@@ -1,0 +1,65 @@
+app.controller("SavedForLaterCtrl",function( $scope, $http,$rootScope, $timeout, SDKService) {
+var saveforlaterdata = localStorage.getItem("savedForLaterJson");
+var saveforlaterdataarr = JSON.parse(saveforlaterdata);
+$scope.saveforlater = saveforlaterdataarr.savedForLater;
+
+ $scope.redirect_details=function(catindex,articleindex,provider){
+
+$rootScope.articleIndex = articleindex;
+$rootScope.categoryindex = catindex;
+$rootScope.provider = provider;
+window.location.hash = 'articledetail';
+ }
+
+
+
+$scope.deleteSaveFavourite = function(catindex, articleindex, provider) {
+	 var currnt_class = '.favicon'+catindex+articleindex;
+
+			$('.favicon'+catindex+articleindex+provider).attr('id','load_favicon_sfl');
+			$('.favicon'+catindex+articleindex+provider).addClass('news-favourite-update');
+			
+			$timeout(function() {
+			 			$('.favicon'+catindex+articleindex+provider).removeClass('news-favourite-update');
+			 			$('.favicon'+catindex+articleindex+provider).fadeIn('slow', function() {
+			 				$(this).attr('id','not_saveicon_sfl');
+			 				});
+			 	 }, 800); 
+
+			 		 	$timeout(function() {
+					     $('.favicon'+catindex+articleindex+provider).parent().parent().fadeOut('slow', function(){
+						  $(this).remove();
+
+						});
+					     $timeout(function() {
+					      var c, title, found = false, obj = saveforlaterdataarr.savedForLater, obje = saveforlaterdataarr;
+					       //var obj = saveforlaterdataarr.savedForLater;
+							    for (c in obj) { 
+							            if (obj[c]["catindex"] == catindex && obj[c]["articleindex"] == articleindex && obj[c]["provider"] == provider) {
+							            	title = obje.savedForLater[c]["articleheadline"];
+							                //obje.savedForLater.splice(c, 1);
+							                break;
+							            }
+							        
+							    }
+					    var jsonStr = JSON.stringify(obje);
+					    $scope.saveforlater = obje.savedForLater;
+						localStorage.setItem("savedForLaterJson", jsonStr);
+
+							    SDKService.showPopup({
+				                popupType: "timer", // popup type
+				                popupTitle: title+" deleted from Saved for later", // popup title
+				                popupMessage: title+" deleted from Saved for later", // popup message
+				                popupTimer: 2, // used only for timer popup
+				            });
+							 }, 1200);     
+				     }, 1000); 
+
+
+
+			
+	}
+
+});
+
+
