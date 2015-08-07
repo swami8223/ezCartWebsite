@@ -12,10 +12,10 @@ cart.items.push(cartproduct);
 cart.itemsLength = cart.items.length;
 
 
-$timeout(function() {
+
 localStorage.setItem("cart", JSON.stringify(cart));
 	$rootScope.$broadcast('cartupdated', cartproduct)
-},5000);
+
 
 
 

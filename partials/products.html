@@ -64,11 +64,11 @@
 				<div class="col-md-12 productsMain">
 
 
-
+<h1>{{productItem.length}}</h1>
 
 					<div class="wowitemboxlist"  ng-init="fetchProduct()">
-						<div class="wowitembox productId{{products[0].ProductId}}"   ng-repeat="(key, products) in groupItem | filter:searchText | filter:brandList">
-							<div class="wowitemboxinner" ng-if='products.length == 1' >
+<div class="wowitembox productId{{products[0].ProductId}}"   ng-repeat="products in productItem | filter:searchText | filter:brandList">
+	<div class="wowitemboxinner"  >
 								<div class="imagearea">
 			<img width="555" height="370" ng-src="{{domainurl}}{{products[0].ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif" class="attachment-post-thumbnail wp-post-image" alt="163_1"/>
 									<div class="caption">
@@ -84,17 +84,15 @@
 									</div>
 								</div>
 								<div class="notesarea">
-									<a ng-click="viewProduct(products[0])" title="{{key}}">
-
-								
-                                       <div>
-                                       	
-                                       			<h2>
-										{{key}}</h2>
-
-										<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
+						<select ng-show='products.length > 1' class='groupSelectbox'>
+                         <option ng-value='$index' ng-repeat='items in products'>{{items.ProductName}}</option>
+                        </select> 
+									<a class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].ProductName}}">
+									{{products[0].ProductName}}<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
 										{{products.TamilName}}</h2> -->
-                                       </div>
+										</a>
+
+
 								
 										<div class="tags">
 											<div class="brand">{{products[0].BrandName}}</div>
@@ -104,10 +102,6 @@
 												<span class="favtext">add to fav</span>
 											</div>
 										</div>
-                                     
-                                      
-					
-									</a>
 								
 									<div class="notesbottom">
 
@@ -118,23 +112,23 @@
 										   
 										</div>
 									
-                                     
+                      
 
 										<div class="cart">
-											<div ng-if="products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart">
+			<div ng-if="products[0].IsStockAvailable == 'y' || products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart">
 												
 											<p class="fleft">
-					<label>Qty</label><input type="text" class="qty" placeholder="qty" ng-model="products[0].qty"></input>
+					<label>Qty</label><input type="text" class="qty" placeholder="1" value='2' ng-model="products[0].qty"></input>
 						</p>
 
-											</div>
-										
+			</div>
 
 
-<input  ng-click="addtoCart(products[0],$event)" class="addToCart" type="submit" value="Add To Cart">
+<input ng-if='products.length == 1'  ng-click="addtoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
+		
+<input ng-if='products.length > 1'  ng-click="addgrouptoCart(products,$event)" class="addToCart" type="submit" value="Add To2 Cart">
 		
 
-		
                                            
 											
 
@@ -151,91 +145,7 @@
 
 
 <!-- Select QTY -->
-<div ng-if='products.length > 1' class="wowitemboxinner">
-<div class="imagearea groupimage">
-			<img width="555" height="370" ng-src="{{domainurl}}{{products[0].ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif" class="attachment-post-thumbnail wp-post-image" alt="163_1"/>
-									<div class="caption">
-										<div class="blur">
-										</div>
-										<div class="caption-text">
-											<div class="captionbuttons">
-												<a ng-click="viewProduct(products[0])" class="captiondetails"><i class="fa fa-link"></i> View Details </a>
-											</div>
 
-											
-										</div>
-									</div>
-								</div>
-								<div class="notesarea">
-									<a ng-click="viewProduct(products[0])" title="{{key}}">
-
-								
-                                       <div>
-                                       	
-                                       			<h2>
-										select {{key}}</h2>
-
-										<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
-										{{products.TamilName}}</h2> -->
-                                       </div>
-								
-										<div class="tags">
-											<div class="brand">{{products[0].BrandName}}</div>
-											 <div class="incart">inCart</div>
-											 <div class="utility">
-												<span class="favIcon noFav">&hearts;</span>
-												<span class="favtext">add to fav</span>
-											</div>
-										</div>
-                                     
-                                      
-					
-									</a>
-								
-									<div class="notesbottom">
-
-					<select ng-repeat='unit in products' class='groupunits'>
-                     <option>{{unit.}}</option>
-                     <option>3</option>
-                     <option>4</option>
-
-					</select>		
-										<div class="fleft">
-										<p class="mrp"><a class="price">{{products[0].Mrp}} Rs </a></span></p>
-										 <p class="amount"><a class="price "> {{products[0].Price}} Rs </a></p>
-										   
-										</div>
-									
-                                     
-
-										<div class="cart">
-											<div ng-if="products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart">
-												
-											<p class="fleft">
-					<label>Qty</label><input type="text" class="qty" placeholder="qty" ng-model="products[0].qty"></input>
-						</p>
-
-											</div>
-					
-
-
-<input  ng-click="addtoCart(products[0],$event)" class="addToCart" type="submit" value="Add To Cart">
-		
-
-		
-                                           
-											
-
-											<a ng-if="products[0].IsStockAvailable == 'N'"  class="edd-add-to-cart">
-												<span class="edd-add-to-cart-label">Out of Stock</span>
-											</a>
-
-										</div>
-										<div class="clearfix">
-										</div>
-									</div>
-								</div>
-							</div>
 
 
 </div>

@@ -449,7 +449,7 @@ li.checkoutmenu {
   /* padding: 0 15px 30px 15px; */
   overflow: hidden;
   float: left;
-  height: 270px;
+  height: 320px;
   border: 1px solid #ccc;
   margin: 0px 10px 10px 0px;
   -webkit-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
@@ -2545,6 +2545,43 @@ margin: 0;
 .featureItems .wowitemboxinner .imagearea{
     margin: 0%;
 }
+
+.wowitemboxinner .groupSelectbox{
+	display: block;
+}
+
+
+.wowitemboxinner .prodname
+{display: block;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;}
+
+ #showpopup{
+ 	display: none;
+    position: fixed;
+    top: 15%;
+    background: #fff;
+    border: 2px solid #b50000;
+    border-radius: 5px;
+    /* display: none; */
+    left: 30%;
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    text-align: center; 
+ }   
+
+ .cartLink{
+ 	color:  #b50000;
+ 	font-size: 14px;
+ }
+
+  .cartLink:hover{
+  	cursor: pointer;
+  	color:  #b50000;
+  }
+
 /*.cartblock:hover .cartList,.cartList:hover{
     
 display: block;

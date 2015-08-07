@@ -14,7 +14,8 @@ $scope.groupUp = function(listItem){
 
 
    $scope.singleteams ={};
-   $scope.groupItem = {};
+   $scope.productItem = {};
+   $scope.groupItem = new Array();
    var groupName = ''
 
             listItem.forEach(function (item) {
@@ -43,11 +44,13 @@ $scope.groupUp = function(listItem){
             });  
 
 
+$scope.productItem = new Array()
 
-
-            console.log($scope.groupItem)
-   
-
+for (var key in $scope.groupItem) {
+  if ($scope.groupItem.hasOwnProperty(key)) {
+    $scope.productItem.push($scope.groupItem[key]);
+  }
+}
 
 
 }
@@ -92,7 +95,15 @@ $rootScope.$on("cartupdated",function(e,product){
 
 	$(".productId"+product.ProductId).removeClass("addingtoCart");
 $(".productId"+product.ProductId).addClass("addedToCart");
+ 
+var cartproductName = product.ProductName +' added to cart'
+
+showtimerPopup(cartproductName,'')
+
 });
+
+
+
 
 
 
@@ -108,14 +119,29 @@ $scope.productFailureFunction = function(){
 
 $scope.addtoCart = function(product,event){
 	console.log(product)
-// var itemdiv = angular.element(event.target);
-// itemdiv.parents(".wowitembox").addClass("addedToCart");
+var itemdiv = angular.element(event.target);
+ itemdiv.parents(".wowitembox").addClass("addedToCart");
 
-$(".productId"+product.ProductId).addClass("addingtoCart");
+//$(".productId"+product.ProductId).addClass("addingtoCart");
 
    
-	cartFactory.addToCart(product)
+	cartFactory.addToCart(product[0])
 }
+
+
+
+$scope.addgrouptoCart = function(product,event){
+
+var itemdiv = angular.element(event.target);
+itemdiv.parents(".wowitembox").addClass("addedToCart");
+
+var groupitem =itemdiv.parents(".wowitembox").find('.groupSelectbox').val();
+
+cartFactory.addToCart(product[groupitem])
+
+}
+
+
 
 $scope.selectQTy = function(product){
 // $(".productId"+product.ProductId).addClass("addingtoCart");

@@ -93,6 +93,20 @@ function unloadPopupBox() {    // TO Unload the Popupbox
         }
 
 
+function showtimerPopup(header,text, timer){
+
+$('#showpopup').fadeIn("slow");
+$('#showpopup').find('.header').text(header);
+$('#showpopup').find('.htmlcontent').html(text);
+
+
+setTimeout(function(){
+ $('#showpopup').fadeOut("slow");
+}, 3000);
+
+
+}
+
 
 
 $(document).ready( function() {
