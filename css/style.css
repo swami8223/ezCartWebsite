@@ -10,7 +10,7 @@ Version:1.0
 body,html {
 	text-rendering:optimizeLegibility !important;
 	-webkit-font-smoothing:antialiased !important;
-	height: 100%;
+
 }
 body {
 	font-weight:400;
