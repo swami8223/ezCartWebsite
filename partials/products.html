@@ -84,11 +84,13 @@
 									</div>
 								</div>
 								<div class="notesarea">
-						<select ng-show='products.length > 1' class='groupSelectbox'>
-                         <option ng-value='$index' ng-repeat='items in products'>{{items.ProductName}}</option>
+	<select  ng-model='products.selectID' ng-show='products.length > 1' class='groupSelectbox'>
+     <option ng-value='$index'  ng-selected="{{items.ProductName== products[0].ProductName}}" ng-repeat='items in products'>{{items.ProductName}}</option>
                         </select> 
-									<a class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].ProductName}}">
-									{{products[0].ProductName}}<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
+	
+<a class='prodname' ng-show="products.selectID">{{products[products.selectID].ProductName}}</a>
+	<a ng-hide="products.selectID" class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].GroupName}}">
+									{{products[0].GroupName}}<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
 										{{products.TamilName}}</h2> -->
 										</a>
 
@@ -105,8 +107,16 @@
 								
 									<div class="notesbottom">
 
-										
-										<div class="fleft">
+						
+			<div ng-show="products.selectID"   class="fleft">
+<p  class="mrp"><a class="price">{{products[products.selectID].Mrp}} Rs </a></span></p>
+	<p  class="amount"><a class="price "> {{products[products.selectID].Price}} Rs </a></p>
+										   
+									
+									</div>
+
+
+						<div ng-hide="products.selectID"  class="fleft">
 										<p class="mrp"><a class="price">{{products[0].Mrp}} Rs </a></span></p>
 										 <p class="amount"><a class="price "> {{products[0].Price}} Rs </a></p>
 										   

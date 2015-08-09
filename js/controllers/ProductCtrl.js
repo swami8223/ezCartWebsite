@@ -104,7 +104,13 @@ showtimerPopup(cartproductName,'')
 
 
 
+// $scope.changeItem = function(product,index){
 
+// var selectitemdiv = angular.element(event.target);
+// var selectgroupitem =selectitemdiv.parents(".wowitembox").find('.groupSelectbox').val();
+
+// // alert(selectgroupitem)
+// }
 
 
 $scope.closeViewProduct = function(){
@@ -133,9 +139,13 @@ var itemdiv = angular.element(event.target);
 $scope.addgrouptoCart = function(product,event){
 
 var itemdiv = angular.element(event.target);
+
+var groupitem =itemdiv.parents(".wowitembox").find('.groupSelectbox').val()
+groupitem= groupitem.split(',')[0];
+
 itemdiv.parents(".wowitembox").addClass("addedToCart");
 
-var groupitem =itemdiv.parents(".wowitembox").find('.groupSelectbox').val();
+
 
 cartFactory.addToCart(product[groupitem])
 
