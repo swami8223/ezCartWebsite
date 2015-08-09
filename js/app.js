@@ -37,6 +37,10 @@ app.config(['$routeProvider',function($routeProvider) {
 					 .when('/cart', {
 				templateUrl: 'partials/cart.html',
 				controller: 'CartCtrl' })
+
+					 .when('/login', {
+				templateUrl: 'partials/login.html',
+				controller: 'LoginCtrl' })
 			
 			 //RHD & LHD
 

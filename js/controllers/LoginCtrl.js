@@ -5,11 +5,13 @@ app.controller("LoginCtrl",['$scope','$http','$timeout','$location' ,function( $
 	
 
 
-$scope.signupForm =  function(){
-$location.path("home");
-};
 
-
+$scope.loginsubmit = function(){
+	if ($scope.userForm.$valid) {
+				alert('our form is amazing');
+				console.log($scope.user)
+			}
+}
 				
 				}]) ;
 				

@@ -1,0 +1,30 @@
+<div class="boxedlayout loginpage">
+
+<div class='loginLayout'>
+<h1>Login</h1>
+
+<form name="userForm" novalidate ng-submit="loginsubmit()" >
+
+      <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="user.email" required>
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+            <label>Password</label>
+            <input ng-maxlength='10' required ng-minlength='4' type="password" name="password" class="form-control" ng-model="user.password">
+            <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Enter a valid password.</p>
+        </div>
+
+
+
+
+<input ng-disabled="userForm.$invalid" type="submit" value="Login" class=" fright cleardiv checkout"></input>
+
+</form>
+
+</div>
+</div>
+
+	<div ng-include ="'partials/footer.html'"></div>
