@@ -3,24 +3,27 @@
 <div class='loginLayout'>
 <h1>Login</h1>
 
-<form name="userForm" novalidate ng-submit="loginsubmit()" >
+<form name="userForm" novalidate ng-submit="userloginsubmit()" >
 
-      <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+      <div class="form-group" ng-class="{ 'has-error' : userForm.User_Id.$invalid && !userForm.User_Id.$pristine }">
             <label>Email</label>
-            <input type="email" name="email" class="form-control" ng-model="user.email" required>
-            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            <input type="email" name="User_Id" class="form-control" ng-model="user.User_Id" required>
+            <p ng-show="userForm.User_Id.$invalid && !userForm.User_Id.$pristine" class="help-block">Enter a valid email.</p>
         </div>
 
-      <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+      <div class="form-group" ng-class="{ 'has-error' : userForm.Password.$invalid && !userForm.Password.$pristine }">
             <label>Password</label>
-            <input ng-maxlength='10' required ng-minlength='4' type="password" name="password" class="form-control" ng-model="user.password">
-            <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Enter a valid password.</p>
+            <input ng-maxlength='10' required ng-minlength='4' type="Password" name="Password" class="form-control" ng-model="user.Password">
+            <p ng-show="userForm.Password.$invalid && !userForm.Password.$pristine" class="help-block">Enter a valid password.</p>
         </div>
 
 
 
 
 <input ng-disabled="userForm.$invalid" type="submit" value="Login" class=" fright cleardiv checkout"></input>
+
+<a  ng-href='#/signup'  type="button"   class=" fleft cleardiv checkout signup">Signup</a>
+
 
 </form>
 

@@ -1,0 +1,68 @@
+<div class="boxedlayout loginpage">
+
+<div class='loginLayout'>
+<h1>SignUp</h1>
+
+<form name="userForm" novalidate ng-submit="userSignupsubmit()" >
+
+      <div class="form-group" ng-class="{ 'has-error' : userForm.User_Id.$invalid && !userForm.User_Id.$pristine }">
+            <label>Firstname</label>
+            <input type="text" name="User_Id" class="form-control" ng-model="signupUser.Firstname" required>
+            <p ng-show="userForm.Firstname.$invalid " class="help-block">Enter firstname</p>
+        </div>
+
+
+        <div class="form-group">
+            <label>LastName</label>
+            <input type="text" name="User_Id" class="form-control" ng-model="signupUser.LastName" >
+
+        </div>
+        
+
+
+
+      <div class="form-group" ng-class="{ 'has-error' : userForm.Email_Id.$invalid && !userForm.Email_Id.$pristine }">
+            <label>Email</label>
+            <input type="email" name="Email_Id" class="form-control" ng-model="signupUser.Email_Id" required>
+            <p ng-show="userForm.Email_Id.$invalid && !userForm.Email_Id.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+
+  <label>Gender   </label>
+          <label>
+    <input type="radio" ng-model="signupUser.Gender" value="Male">
+    Male
+  </label>
+
+    <label>
+    <input type="radio" ng-model="signupUser.Gender" value="FeMale">
+    FeMale
+  </label>
+
+
+
+     <div class="form-group" ng-class="{ 'has-error' : userForm.MobileNo.$invalid && !userForm.MobileNo.$pristine }">
+            <label>MobileNo</label>
+            <input  required  type="Number" name="MobileNo" class="form-control" ng-model="signupUser.MobileNo">
+            <p ng-show="userForm.MobileNo.$invalid && !userForm.MobileNo.$pristine" class="help-block">Enter a valid mobile number .</p>
+        </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : userForm.Password.$invalid && !userForm.Password.$pristine }">
+            <label>Password</label>
+            <input ng-maxlength='10' required ng-minlength='4' type="Password" name="Password" class="form-control" ng-model="signupUser.Password">
+            <p ng-show="userForm.Password.$invalid && !userForm.Password.$pristine" class="help-block">Enter a valid password.</p>
+        </div>
+
+
+
+
+<input ng-disabled="userForm.$invalid" type="submit" value="signup" class=" fright cleardiv checkout"></input>
+
+
+
+
+</form>
+
+</div>
+</div>
+
+	<div ng-include ="'partials/footer.html'"></div>

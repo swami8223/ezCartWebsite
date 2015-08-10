@@ -39,6 +39,9 @@ var domainurl = "http://shoppingcartwebapi.4maven.com/";
 
 var fomdataContentType = "application/x-www-form-urlencoded;charset=utf-8";
 var getCompleteMenu = "Menu/WebPageCompleteMenu";
-var getProduct = "Product/GetProductByMnuId/"
+var getProduct = "Product/GetProductByMnuId/";
+var login = "Credential/SignIn/";
+var signup = "Credential/SignUp";
+var addToCart = "Cart/AddToCart";
 
 

@@ -1,5 +1,5 @@
 
-app.factory('apiFactory', function($http) {
+app.factory('apiFactory', function($http,$location,cacheFactory) {
      
     var apiFactory = {}; 
  
@@ -28,7 +28,13 @@ apiFactory.DoAjax = function(ActionMethod, SubUrl, InputData, SuccessFunction,Fa
             
             else if(data.Result == 2){
                 //$rootScope.signout();
-                servererror(data.Message);
+              //  cacheFactory.put('backurl',$location.path());
+                //cacheFactory.put('message','Please signin to add to cart');
+cacheFactory.backurl = $location.path();
+cacheFactory.message = 'Please signin to add to cart';
+                $location.path('/login');
+
+
 
             }else if(data.Result == 0){
              errorPopup(data.ErrorList)

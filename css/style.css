@@ -2607,6 +2607,14 @@ margin: 0;
 background: gray;
 
 }
+.signup{
+background-color: #b50000;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 19px;
+}
+
+
 /*.cartblock:hover .cartList,.cartList:hover{
     
 display: block;

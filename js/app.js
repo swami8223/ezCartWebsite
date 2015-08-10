@@ -41,6 +41,10 @@ app.config(['$routeProvider',function($routeProvider) {
 					 .when('/login', {
 				templateUrl: 'partials/login.html',
 				controller: 'LoginCtrl' })
+
+					 		 .when('/signup', {
+				templateUrl: 'partials/signUp.html',
+				controller: 'LoginCtrl' })
 			
 			 //RHD & LHD
 

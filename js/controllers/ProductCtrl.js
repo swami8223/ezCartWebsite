@@ -19,7 +19,7 @@ $scope.groupUp = function(listItem){
    var groupName = ''
 
             listItem.forEach(function (item) {
-
+                item.Quantity = 1
 				if (item.GroupName == null || item.GroupName === undefined || item.GroupName == '') {
  				groupName = item.ProductName;
 

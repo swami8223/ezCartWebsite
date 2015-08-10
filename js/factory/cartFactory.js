@@ -2,26 +2,38 @@ app.factory('cartFactory',[ '$rootScope','$timeout', function ($rootScope,$timeo
 	// body...
 
    var cartFactory = {}
+
 var cart = new Object();
 cart.items = new Array();   
 cartFactory.cartList = localStorage.getItem("cart");
 
    cartFactory.addToCart = function(cartproduct){
 
+var cartList = cartFactory.getCartList();
+console.log(cartList);
+
+
+if(cartList != null){
+  for(var cartItem = 0; cartItem < cartList.items.length ;cartItem++){
+
+  if(cartList.items[cartItem].ProductId == cartproduct.ProductId){
+     cartList.items[cartItem].Quantity = cartList.items[cartItem].Quantity+1;
+     //cart.items.push(cartproduct);
+cart = cartList;
+localStorage.setItem("cart", JSON.stringify(cartList));
+  $rootScope.$broadcast('cartupdated', cartproduct)
+     return;
+  }
+}
+}
 cart.items.push(cartproduct);
 cart.itemsLength = cart.items.length;
-
-
-
 localStorage.setItem("cart", JSON.stringify(cart));
-	$rootScope.$broadcast('cartupdated', cartproduct)
+$rootScope.$broadcast('cartupdated', cartproduct)
+};
 
 
 
-
-
-
-   };
    
    cartFactory.removeCart = function(){
 
