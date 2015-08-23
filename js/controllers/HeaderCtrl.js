@@ -1,4 +1,4 @@
-app.controller("HeaderCtrl",['$scope','$rootScope','$http','$timeout','$location','cartFactory','cacheFactory',function( $scope,$rootScope,$http,$timeout,$location,cartFactory,cacheFactory) {
+app.controller("HeaderCtrl",['$scope','$rootScope','$http','$timeout','$location','cartFactory','cacheFactory','userfactory',function( $scope,$rootScope,$http,$timeout,$location,cartFactory,cacheFactory,userfactory) {
 
 $scope.loggedin = false;
 $scope.userName = false;
@@ -14,15 +14,52 @@ $scope.cartItemTotal = cartFactory.getcartLength();
 
 $scope.checklogin = function(){
 
-userInfo = cacheFactory.userInfo
-	if(userInfo == null ){
+userfactory.getuserInfo($scope.sucessUser,$scope.failureuser);
+
+     
+}
+
+
+$scope.sucessUser = function(userData){
+	
+	if(userData == null ){
 		
            
 	}else{
 		$scope.loggedin = true;
-		$scope.userName = userInfo.FirstName
+		$scope.userName = userData.Information.UserInfo.FirstName
+		 	if(!$scope.$$phase) {
+  //$digest or $apply
+  $scope.$apply();
+}
 	}
-     
+}
+$scope.failureuser = function(userInfo){
+	console.log(userInfo);
+userfactory.deleteuser();
+}
+
+
+$scope.signout = function(){
+userfactory.signout($scope.signoutSucess,$scope.signoutfailure);
+
+}
+
+
+$scope.signoutSucess = function(){
+userfactory.deleteuser();
+$scope.loggedin = false;
+$scope.userName = null;
+ 	if(!$scope.$$phase) {
+  //$digest or $apply
+  $scope.$apply();
+}
+
+}
+
+
+$scope.signoutfailure = function(){
+
 }
 
 

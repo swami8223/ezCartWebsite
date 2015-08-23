@@ -31,6 +31,14 @@
                   </div>
 
                 </div>
+
+                          <ul id="menu-top" class="nav navbar-nav " ng-init="checklogin()">
+            <li ng-if="loggedin == false"><a ng-click="navtoLogin()">signin/account</a></li>
+            <li ng-if="loggedin == true && userName != false"><a ng-click="navtouserProfile()">{{userName}}+</a></li>
+             <li ng-if="loggedin == true && userName != false"><a ng-click="signout()">SignOut</a></li>
+           
+
+          </ul>
       </div>
     </nav>
 

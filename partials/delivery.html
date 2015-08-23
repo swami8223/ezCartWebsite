@@ -1,0 +1,40 @@
+<div ng-include ="partials/header.html"></div>
+
+<div class="boxedlayout">
+
+<title>delivery</title>
+<h2>Delivery</h2>
+
+
+<div class='column2 border-right'>
+ 
+ <h3>Shipping Details</h3>
+
+<form name="deliveryForm" novalidate ng-submit="deliverysubmit()" >
+<label>Selct payment mode</label>
+<select  ng-model='deliveryForm.paymode'  class=' '>
+<option selected disabled>Select Payment mode</option>
+     <option ng-value='$index'   ng-repeat='payType in paymentmode'>{{payType.Status}}</option>
+                        </select> 
+
+<label>Selct shipping mode</label>
+<select  ng-model='deliveryForm.shipmode'  class=' '>
+	<option selected disabled>Select shippingmode mode</option>
+     <option ng-value='$index'   ng-repeat='shipType in shippingmode'>{{shipType.ModeName}}</option>
+                        </select> 
+
+
+
+	</form>
+
+</div>
+
+
+<div class='column2'>
+<h3>Product Details</h3>
+
+</div>
+
+
+</div>
+

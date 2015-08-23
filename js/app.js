@@ -13,7 +13,7 @@
  */
 'use strict';
 
-var app = angular.module( "ezCart", ['ngTouch','ngRoute','ngAnimate','ngDraggable','dcbImgFallback','ui.filters',"checklist-model"] );	
+var app = angular.module( "ezCart", ['ngTouch','ngRoute','ngAnimate','ngDraggable','dcbImgFallback','ui.filters',"checklist-model",'services.breadcrumbs'] );	
 app.config(['$routeProvider',function($routeProvider) {
 			$routeProvider
 
@@ -45,6 +45,10 @@ app.config(['$routeProvider',function($routeProvider) {
 					 		 .when('/signup', {
 				templateUrl: 'partials/signUp.html',
 				controller: 'LoginCtrl' })
+
+					 		 .when('/delivery', {
+				templateUrl: 'partials/delivery.html',
+				controller: 'DeliveryCtrl' })
 			
 			 //RHD & LHD
 

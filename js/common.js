@@ -43,5 +43,9 @@ var getProduct = "Product/GetProductByMnuId/";
 var login = "Credential/SignIn/";
 var signup = "Credential/SignUp";
 var addToCart = "Cart/AddToCart";
+var getUserInfo = 'Credential/GetInfo';
+var signout = 'Credential/SignOut';
+var paymode = 'Invoice/GetInvoicePayMode';
+var shipmode = 'Invoice/GetInvoiceShippingMode';
 
 

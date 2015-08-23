@@ -30,18 +30,29 @@ apiFactory.DoAjax = function(ActionMethod, SubUrl, InputData, SuccessFunction,Fa
                 //$rootScope.signout();
               //  cacheFactory.put('backurl',$location.path());
                 //cacheFactory.put('message','Please signin to add to cart');
-cacheFactory.backurl = $location.path();
-cacheFactory.message = 'Please signin to add to cart';
+
+                if(SubUrl == 'Credential/GetInfo'){
+                     FailureFunction(data)
+                }else{
+                    cacheFactory.backurl = $location.path();
+                 cacheFactory.message = 'Please signin to add to cart';
                 $location.path('/login');
+                }
+
 
 
 
             }else if(data.Result == 0){
-             FailureFunction(data.Message)
+             FailureFunction(data)
             }
 
             else{
-               servererror("Conection failed");
+                 if(SubUrl == 'Credential/GetInfo'){
+                 FailureFunction(data)
+                 }else{
+                   servererror("Conection failed");
+                 }
+       
             }
    
 
@@ -66,11 +77,18 @@ $.ajax({
                 SuccessFunction(data)
             }
             else if (data.Result == 2) {
-                cacheFactory.backurl = $location.path();
+                 if(SubUrl == 'Credential/GetInfo'){
+                     FailureFunction(data)
+                }else{
+                 cacheFactory.backurl = $location.path();
                 cacheFactory.message = 'Please signin to add to cart';
                 $location.path('/login');
+                }
+              
             } else if (data.Result == 0) {
-                FailureFunction(data.Message)
+
+                FailureFunction(data);
+              
             }
             else {
                 servererror("Conection failed");

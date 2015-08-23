@@ -30,6 +30,8 @@ cacheFactory.menudata = menudata
 
 $scope.menuFailureFunction = function(){
 
+
+
 }
 
 

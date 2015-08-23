@@ -2303,11 +2303,11 @@ height: 300px;
 .cartblock{
   position: absolute;
   top: 20px;
-  right: 3%;
+  right: 18%;
   font-size: 15px;
   color: #fff;
     cursor: pointer;
-  width: 270px;
+  width: 125px;
 }
 .cartblock .fa-shopping-cart{
 	font-size: 30px;
@@ -2657,9 +2657,30 @@ background-color: #b50000;
 }
 
  
+#menu-top.nav.navbar-nav {
+    position: absolute;
+    top: 20px;
+    right: 3%;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    width: 200px;
+}
 
 
+.column2{
+	float: left;
+	width: 45%;
+	padding: 3%;
+}
 
+.border-left{
+	border-left: 1px solid #ccc;
+}
+
+.border-right{
+	border-right: 1px solid #ccc;
+}
 
 /*.cartblock:hover .cartList,.cartList:hover{
     

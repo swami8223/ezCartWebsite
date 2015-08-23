@@ -14,10 +14,10 @@ $scope.addtoCart = function(){
 
 CartProduct.ProductList = $scope.cartList.items
 
-CartProduct = formParse(CartProduct)
-console.log(CartProduct)
+
+//console.log(CartProduct)
 //CartProduct=$.param(CartProduct)
-		apiFactory.PostForm("POST",addToCart,CartProduct,$scope.addTocartSucess,$scope.addTocartFailure,fomdataContentType);
+		apiFactory.PostForm("POST",addToCart,formParse(CartProduct),$scope.addTocartSucess,$scope.addTocartFailure,fomdataContentType);
 
 
 }
@@ -25,11 +25,28 @@ console.log(CartProduct)
 $scope.addTocartSucess = function(data){
 
 console.log(data);
+	$location.path('/delivery');
+	 	if(!$scope.$$phase) {
+  //$digest or $apply
+  $scope.$apply();
+}
+
+
+
 
 }
 
 $scope.addTocartFailure = function(data){
 console.log(data);
+var errorlist = '';
+$.each(data.ErrorList,function(key,errordata){
+
+errorlist += errordata+ '</br>';
+
+})
+showtimerPopup('Adding to cart failure',errorlist)
+
+
 
 }
 

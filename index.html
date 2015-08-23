@@ -28,7 +28,7 @@
 
 
 
-<div ng-include ="'partials/header.html'"></div>
+
   <div id="view" class="" ng-view></div><!--END view -->
 
 <div class='showpopup' id='showpopup'>
@@ -62,13 +62,18 @@
     <script src="js/factory/apiFactory.js"></script>
     <script src="js/factory/cacheFactory.js"></script>
     <script src="js/factory/cartFactory.js"></script>
+    <script src="js/factory/userfactory.js"></script>
 	<script src="js/controllers/LoginCtrl.js"></script>
     <script type="text/javascript" src='js/directives/checklist-model.js'></script>
-  <script src="js/controllers/HomeCtrl.js"></script>
-  <script src="js/controllers/MenuCtrl.js"></script>
+     <script src="js/controllers/HomeCtrl.js"></script>
+    <script src="js/controllers/MenuCtrl.js"></script>
     <script src="js/controllers/HeaderCtrl.js"></script>
-     <script src="js/controllers/ProductCtrl.js"></script>
-             <script src="js/controllers/CartCtrl.js"></script>
+    <script src="js/controllers/ProductCtrl.js"></script>
+    <script src="js/controllers/CartCtrl.js"></script>
+      <script  src="js/controllers/DeliveryCtrl.js"></script>
+        <script src="js/service/breadcurm.js"></script>
+
+    
 
 <script type="text/javascript" src="js/global.js"></script>
         <script type='text/javascript' src='assets/js/jquery.js'></script>
@@ -78,6 +83,7 @@
         <script type='text/javascript' src='assets/js/SmoothScroll.js'></script>
         <script type='text/javascript' src='assets/js/init.js'></script>
         <script type='text/javascript' src='assets/js/anim.js'></script>
+
 
           <script type='text/javascript' src='js/angular-img-fallback-master/angular.dcb-img-fallback.min.js'></script>
           <script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -1,4 +1,4 @@
-app.controller("LoginCtrl",['$scope','$http','$timeout','$location','apiFactory','cacheFactory' ,function( $scope, $http,$timeout,$location,apiFactory,cacheFactory) {
+app.controller("LoginCtrl",['$scope','$http','$timeout','$location','apiFactory','cacheFactory','userfactory' ,function( $scope, $http,$timeout,$location,apiFactory,cacheFactory,userfactory) {
 
 			 $scope.email = '';
              $scope.password = '';
@@ -27,7 +27,7 @@ $scope.userloginsubmit = function(){
 
     $scope.user.Role = "user"
 	userDetails	= serializeData($scope.user)
-	apiFactory.DoAjax("POST",login,userDetails,$scope.userloginSucess,$scope.userloginFailure,fomdataContentType);
+	apiFactory.PostForm("POST",login,userDetails,$scope.userloginSucess,$scope.userloginFailure,fomdataContentType);
 
 
 			}
@@ -38,9 +38,16 @@ $scope.userloginsubmit = function(){
 
 
 $scope.userloginSucess = function(data){
- cacheFactory.userInfo = data.Information.UserInfo 
+// userfactory.userInfo = data.Information.UserInfo ;
+// userfactory.loginUser(data.Information.UserInfo )
+ userfactory.loginuser(data)
  if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
  	$location.path(cacheFactory.backurl);
+
+ 	if(!$scope.$$phase) {
+  //$digest or $apply
+  $scope.$apply();
+}
  }else{
 $location.path("/home");
 
@@ -53,6 +60,7 @@ $location.path("/home");
 
 $scope.userloginFailure = function(data){
 	console.log(data)
+	showtimerPopup(data.Message,'')
 	
 }
 
@@ -64,7 +72,7 @@ $scope.userSignupsubmit = function(){
 
     $scope.signupUser.Role = "user"
 	userDetails	= serializeData($scope.signupUser)
-	apiFactory.DoAjax("POST",signup,userDetails,$scope.usersignupSucess,$scope.usersignupFailure,fomdataContentType);
+	apiFactory.PostForm("POST",signup,userDetails,$scope.usersignupSucess,$scope.usersignupFailure,fomdataContentType);
 
 
 			}
@@ -73,7 +81,8 @@ $scope.userSignupsubmit = function(){
 
 
 $scope.usersignupSucess = function(data){
- cacheFactory.userInfo = data.Information.UserInfo 
+
+ userfactory.loginuser(data)
  if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
  	$location.path(cacheFactory.backurl);
  }else{
@@ -84,12 +93,12 @@ $location.path("/home");
 
 }
 
-$scope.usersignupFailure = function(message){
-showtimerPopup(message,'')
-if(message == "Email Id Alredy Exist"){
+$scope.usersignupFailure = function(data){
+showtimerPopup(data.Message,'')
+if(data.Message == "Email Id Alredy Exist"){
 	$scope.signupUser.Email_Id = "";
 }
-if(message == "<br>Invalid Mobile No"){
+if(data.Message == "<br>Invalid Mobile No"){
 	$scope.signupUser.MobileNo = "";
 }
 
