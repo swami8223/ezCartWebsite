@@ -11,15 +11,22 @@ function unloadPopupBox() {    // TO Unload the Popupbox
 
   
 
-        function errorPopup(errorlist) {    // To Load the Popupbox
+        function errorPopup(errorlist,message) {    // To Load the Popupbox
                $(".errorHeading").text("");
             $("#countDown").html("");
             
-            var ShowErrorList = ""
+         var ShowErrorList = ""
+                if(errorlist == undefined){
+        ShowErrorList = message;
+
+                }else{
+
             for (x in errorlist){
              
             ShowErrorList = ShowErrorList+  "<li>"+errorlist[x]+"</li>"
             }
+                }
+       
             var counter = 5;
             var id;
             $('#popup_box').fadeIn("slow");
@@ -133,7 +140,34 @@ function serializeData( data ) {
                     return( source );
                 }
 
+function formParse(data){
 
+var formdata = '';
+$.each(data,function(key,value){
+
+    console.log(key,value,typeof(value));
+    if(typeof value == 'object'){
+         
+         $.each(value,function(innerkey,innervalue){
+
+
+           $.each(innervalue,function(formkey,formValue){
+       
+              formdata += key+'['+innerkey+'].'+formkey+'='+formValue+"&";
+
+
+           })
+         });
+    }else{
+        formdata += key +'='+ value +'&';
+
+    }
+
+
+})
+console.log(formdata)
+ return formdata;
+}
 
 
 $(document).ready( function() {

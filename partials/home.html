@@ -10,21 +10,17 @@
     ================================================== -->
     
     <!-- TITLE BEGINS -->
-<div style="float:left;margin-top:49px;width: 20%;" ng-include ="'partials/menu.html'"></div>
+<div class="partial-menu" ng-include ="'partials/menu.html'"></div>
 <div ng-include ="'partials/carousal.html'"></div>
     <!-- TITLE ENDS -->
     
     <!-- MAIN CONTENT BEGINS -->
     <div id="homepagetemplate"  style="clear:both" class="padtop10 padbot40">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 offer-row">
           <div class="clear text-center sectionlatestitems">
-            <h2 class="maintitle">Freature Items</h2>
-            <div class="separatr">
-              <span>
-              <a href="shop.html" class="view-all"><i class="fa fa-reorder"></i></a>
-              </span>
-            </div>
+            <h2 class="maintitle">Special offers</h2>
+       
           </div>
 
         </div>
@@ -33,6 +29,25 @@
 <div  ng-include ="'partials/itemsTemplate.html'"></div>
 
     </div>
+
+
+    <div id="homepagetemplate"  style="clear:both" class="padtop10 padbot40">
+      <div class="row">
+        <div class="col-md-12 offer-row">
+          <div class="clear text-center sectionlatestitems">
+            <h2 class="maintitle">Reason to shop more</h2>
+       
+          </div>
+
+        </div>
+      </div>
+
+<div  ng-include ="'partials/reasontoShop.html'"></div>
+
+    </div>
+
+
+
     <!-- MAIN CONTENT ENDS -->
     
     <!-- CALL TO ACTION

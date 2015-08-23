@@ -13,18 +13,23 @@ $scope.addtoCart = function(){
 
 
 CartProduct.ProductList = $scope.cartList.items
-		apiFactory.DoAjax("POST",addToCart,CartProduct,$scope.addTocartSucess,$scope.addTocartFailure,fomdataContentType);
+
+CartProduct = formParse(CartProduct)
+console.log(CartProduct)
+//CartProduct=$.param(CartProduct)
+		apiFactory.PostForm("POST",addToCart,CartProduct,$scope.addTocartSucess,$scope.addTocartFailure,fomdataContentType);
 
 
 }
 
 $scope.addTocartSucess = function(data){
 
-
+console.log(data);
 
 }
 
-$scope.addTocartFailure = function(){
+$scope.addTocartFailure = function(data){
+console.log(data);
 
 }
 

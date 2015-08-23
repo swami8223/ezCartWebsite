@@ -1,0 +1,68 @@
+
+#wow-menu.navbar-default {
+    background: #461c20 !important;
+        border-radius: 10px;
+}
+
+.partial-menu{
+	float:left;margin-top:80px;width: 20%;
+}
+
+#listiingPage.partial-menu{
+    float: left;
+    margin-top: 60px;
+    width: 100%;
+}
+
+#listiingPage .shopCategory {
+    color: #fff;
+    text-align: center;
+     padding: 1% 2%;
+    background: url(../../img/verticalnav_sprite.png) no-repeat scroll 0% -69px #462616;
+    /* background-size: 11%; */
+    /* background-position: 10px; */
+    font-size: 14px;
+    text-align: left;
+}
+
+.navbar-default .navbar-collapse{
+background: #78422b;
+    width: 65%;
+    margin: 0 12%;
+    padding: 17px 0px;
+
+}
+
+header .searchSpace{
+	    width: 90%;
+    margin: 0 0%;
+}
+header .searchSpace input[type="text"]{
+    float: left;
+    width: 85%;
+    margin: 0px;
+    border: 1px solid #ccc;
+    border-right: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #f1e9d4;
+    padding: 3px 8px;
+    margin-top:7px;
+    border-radius: 10px;
+}
+
+header .searchSpace input[type="submit"] {
+     float: left;
+    width: 11%;
+    margin: 0px;
+    margin-top: 9px;
+    border-radius: 10px;
+    margin-left: -10px;
+    padding: 4px 10px;
+    background: #461c20;
+}
+.search :hover {
+	border: 0px;
+	color: #f1e9d4 !important;
+
+}

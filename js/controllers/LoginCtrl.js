@@ -5,6 +5,8 @@ app.controller("LoginCtrl",['$scope','$http','$timeout','$location','apiFactory'
 	$scope.user = '';
 	$scope.signupUser = {}
 	$scope.signupUser.Gender = 'FeMale'
+
+
   var userDetails = {};
 
 
@@ -22,7 +24,6 @@ $scope.initLogin();
 
 $scope.userloginsubmit = function(){
 	if ($scope.userForm.$valid) {
-				alert('our form is amazing');
 
     $scope.user.Role = "user"
 	userDetails	= serializeData($scope.user)
@@ -36,11 +37,22 @@ $scope.userloginsubmit = function(){
 
 
 
-$scope.userloginSucess = function(){
+$scope.userloginSucess = function(data){
+ cacheFactory.userInfo = data.Information.UserInfo 
+ if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
+ 	$location.path(cacheFactory.backurl);
+ }else{
+$location.path("/home");
+
+ }
+
+
+
 
 }
 
-$scope.userloginFailure = function(){
+$scope.userloginFailure = function(data){
+	console.log(data)
 	
 }
 
@@ -48,17 +60,41 @@ $scope.userloginFailure = function(){
 
 $scope.userSignupsubmit = function(){
 		if ($scope.userForm.$valid) {
-				alert('our form is amazing');
+		
 
     $scope.signupUser.Role = "user"
 	userDetails	= serializeData($scope.signupUser)
-	apiFactory.DoAjax("POST",signup,userDetails,$scope.userloginSucess,$scope.userloginFailure,fomdataContentType);
+	apiFactory.DoAjax("POST",signup,userDetails,$scope.usersignupSucess,$scope.usersignupFailure,fomdataContentType);
 
 
 			}
 }
 
 
+
+$scope.usersignupSucess = function(data){
+ cacheFactory.userInfo = data.Information.UserInfo 
+ if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
+ 	$location.path(cacheFactory.backurl);
+ }else{
+$location.path("/home");
+
+ }
+
+
+}
+
+$scope.usersignupFailure = function(message){
+showtimerPopup(message,'')
+if(message == "Email Id Alredy Exist"){
+	$scope.signupUser.Email_Id = "";
+}
+if(message == "<br>Invalid Mobile No"){
+	$scope.signupUser.MobileNo = "";
+}
+
+   
+}
 
 				
 				}]) ;

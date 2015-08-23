@@ -4,13 +4,12 @@
 
 
 <div class="boxedlayout">
-
-<div id="listiingPage" style="float:left;margin-top:49px;width: 20%;" ng-include ="'partials/menu.html'"></div>
+<div id="listiingPage"  class="partial-menu" ng-include ="'partials/menu.html'"></div>
 
 <div class="shoppage">
 		
 			<!-- TITLE BEGINS -->
-	<div class="headerimage commonHeader" style="background-image: url(http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/2015/03/header.jpg);">
+	<!-- <div class="headerimage commonHeader" style="background-image: url(http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/2015/03/header.jpg);">
 				<div class="headercontent">
 					<div class="">
 						<div class="row">
@@ -25,16 +24,21 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- TITLE ENDS -->
 			
 			<div class=" padbot30 productContent" >
 				<div class="row searchBlock">
 <div class="widget_wysija_cont" style="clear:both;">
+		<div class="fleft breadc">
+									<a href="index.html">Home</a> / {{menuName}}
+								</div>
+
+
                   <form class="widget_wysija ng-pristine ng-valid">
                     <p class="searchSpace col-md-3 fright">
       <input type="text" name="" class="" title="" value="" ng-model="searchText"  placeholder="search in below items">
-                    <input class="" type="submit" value="Search">
+                  <input class="" type="submit" value="Search"> 
                       </p>
                   </form>
                 </div>
@@ -70,7 +74,7 @@
 	<div class="wowitemboxinner"  >
 								<div class="imagearea">
 			<img width="555" height="370" ng-src="{{domainurl}}{{products[0].ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif" class="attachment-post-thumbnail wp-post-image" alt="163_1"/>
-									<div class="caption">
+									<!--<div class="caption">
 										<div class="blur">
 										</div>
 										<div class="caption-text">
@@ -81,27 +85,37 @@
 											
 										</div>
 									</div>
-								</div>
+								</div> !-->
+							</div>
 								<div class="notesarea">
-	<select  ng-model='products.selectID' ng-show='products.length > 1' class='groupSelectbox'>
-     <option ng-value='$index'  ng-selected="{{items.ProductName== products[0].ProductName}}" ng-repeat='items in products'>{{items.ProductName}}</option>
-                        </select> 
+	
 	
 <a class='prodname' ng-show="products.selectID">{{products[products.selectID].ProductName}}</a>
 	<a ng-hide="products.selectID" class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].GroupName}}">
 									{{products[0].GroupName}}<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
 										{{products.TamilName}}</h2> -->
-										</a>
+				<div>						</a>
 
+<select  ng-model='products.selectID' ng-show='products.length > 1' class='groupSelectbox fleft'>
+     <option ng-value='$index'  ng-selected="{{items.ProductName== products[0].ProductName}}" ng-repeat='items in products'>{{items.UnitName}}</option>
+                        </select> 
 
+ <div ng-if="products[0].IsStockAvailable == 'y' || products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart qtycont">
+												
+		<p class="fright qtycont">
+					<label>Qty</label><input type="text" class="qty" placeholder="1" value='2' ng-model="products[0].Quantity"></input>
+						</p>
+
+					</div>
+	</div>
 								
 										<div class="tags">
-											<div class="brand">{{products[0].BrandName}}</div>
+											<!-- <div class="brand">{{products[0].BrandName}}</div> -->
 											 <div class="incart">inCart</div>
-											 <div class="utility">
+											 <!-- <div class="utility">
 												<span class="favIcon noFav">&hearts;</span>
 												<span class="favtext">add to fav</span>
-											</div>
+											</div> !-->
 										</div>
 								
 									<div class="notesbottom">
@@ -124,13 +138,7 @@
                       
 
 										<div class="cart">
-			<div ng-if="products[0].IsStockAvailable == 'y' || products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart">
-												
-											<p class="fleft">
-					<label>Qty</label><input type="text" class="qty" placeholder="1" value='2' ng-model="products[0].Quantity"></input>
-						</p>
-
-			</div>
+	
 
 
 <input ng-if='products.length == 1'  ng-click="addtoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
