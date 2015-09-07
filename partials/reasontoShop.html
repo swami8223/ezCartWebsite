@@ -1,103 +1,122 @@
-          <div class="shopmore wowitemboxlist sectionlatestitems clear">
-          
-            <div class="wowitembox">
-              <div class="wowitemboxinner">
+          <div class="shopmore wowitemboxlist sectionlatestitems clear" ng-controller='ReasontoShop' ng-init='getnewProducts()'>
+ 
+           <div ng-repeat='products in productItem'>
+                  <div class='wowitembox'>   
+    <div class="wowitemboxinner"  >
                 <div class="moreimage">
-                  <img  src="http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/edd/2015/03/163_1.jpg" class="wp-post-image" alt="163_1"/>
-     
-                </div>
-                <div class="notesarea">
-                  <a href="productsingle.html">
-                  <h2>Travel Fashion</h2>
-                  </a>
-                  <div class="description">
-                    <p>
-                     Sed ac scelerisque ligula, ac aliquam ligula. Vivamus ut pellentesque nisi, vel com.
-                    </p>
-                  </div>
-                  <div class="notesbottom">
-                    <div class="price fleft">
-                      $19.00 
+      <img width="555" height="370" ng-src="{{domainurl}}{{products[0].ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif"class="wp-post-image"alt="163_1"/>
+                  <!--<div class="caption">
+                    <div class="blur">
                     </div>
-                    <div class="cart fright">
-                      <a href="#" class="edd-add-to-cart">
-                        <span class="edd-add-to-cart-label">Add to Cart</span>
-                      </a>
-                    </div>
-                    <div class="clearfix">
+                    <div class="caption-text">
+                      <div class="captionbuttons">
+                        <a ng-click="viewProduct(products[0])" class="captiondetails"><i class="fa fa-link"></i> View Details</a>
+                      </div>
+
+                      
                     </div>
                   </div>
-                </div>
+                </div> !-->
               </div>
-              <!-- .wowitemboxinner-->
-            </div>
-            <!-- .wowitembox-->
-            
-            <div class="wowitembox">
-              <div class="wowitemboxinner">
-                <div class="moreimage">
-                  <img src="http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/edd/2015/03/166_1.jpg" class=" wp-post-image" alt="166_1"/>
+                <div class="notesarea">
   
-                </div>
-                <div class="notesarea">
-                  <a href="productsingle.html">
-                  <h2>Winter Feel</h2>
-                  </a>
-                  <div class="description">
-                    <p>
-                     Sed ac scelerisque ligula, ac aliquam ligula. Vivamus ut pellentesque nisi, vel com.
-                    </p>
-                  </div>
-                  <div class="notesbottom">
-                    <div class="price fleft">
-                      $3.00 
+  
+<a class='prodname' ng-show="products.selectID">{{products[products.selectID].ProductName}}</a>
+  <a ng-hide="products.selectID" class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].GroupName}}">
+                  {{products[0].GroupName}}<!--   <h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
+                    {{products.TamilName}}</h2> -->
+         </a>
+
+        <div>          
+
+<select  ng-model='products.selectID' ng-show='products.length > 1' class='groupSelectbox fleft'>
+     <option ng-value='$index'  ng-selected="{{items.ProductName== products[0].ProductName}}" ng-repeat='items in products'>{{items.UnitName}}</option>
+                        </select> 
+
+ <div ng-if="products[0].IsStockAvailable == 'y' || products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart qtycont">
+                        
+    <p class="fright qtycont">
+          <label>Qty</label><input type="text" class="qty" placeholder="1" value='2' ng-model="products[0].Quantity"></input>
+            </p>
+
+          </div>
+  </div>
+                
+                    <div class="tags">
+                      <!-- <div class="brand">{{products[0].BrandName}}</div> -->
+                       <div class="incart">inCart</div>
+                       <!-- <div class="utility">
+                        <span class="favIcon noFav">&hearts;</span>
+                        <span class="favtext">add to fav</span>
+                      </div> !-->
                     </div>
-                    <div class="cart fright">
-                      <a href="#" class="edd-add-to-cart">
-                        <span class="edd-add-to-cart-label">Add to Cart</span>
+                
+                  <div class="notesbottom">
+
+            
+      <div ng-show="products.selectID"   class="fleft">
+<p  class="mrp"><a class="price">{{products[products.selectID].Mrp}} Rs </a></span></p>
+  <p  class="amount"><a class="price "> {{products[products.selectID].Price}} Rs </a></p>
+                       
+                  
+                  </div>
+
+
+            <div ng-hide="products.selectID"  class="fleft">
+                    <p class="mrp"><a class="price">{{products[0].Mrp}} Rs </a></span></p>
+                     <p class="amount"><a class="price "> {{products[0].Price}} Rs </a></p>
+                       
+                    </div>
+                  
+                      
+
+                    <div class="cart">
+  
+
+
+<input ng-if='products.length == 1'  ng-click="addtoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
+    
+<input ng-if='products.length > 1'  ng-click="addgrouptoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
+    
+
+                                           
+                      
+
+                      <a ng-if="products[0].IsStockAvailable == 'N'"  class="edd-add-to-cart">
+                        <span class="edd-add-to-cart-label">Out of Stock</span>
                       </a>
+
                     </div>
                     <div class="clearfix">
                     </div>
                   </div>
                 </div>
               </div>
+
+
+<!-- Select QTY -->
+
+
+
+</div>
+
+
               <!-- .wowitemboxinner-->
+
+
+                              <div class="loadingCurtain">
+                                
+                                <span class="loader">adding to cart</span>
+                              </div>
+</div>
+
             </div>
+            <!-- .wowitembox-->
             <!-- .wowitembox-->
             
-            <div class="wowitembox">
-              <div class="wowitemboxinner">
-                <div class="moreimage">
-                  <img src="http://www.themepush.com/demo-kailo/wp-content/uploads/sites/6/edd/2015/03/172_1.jpg" class="wp-post-image" alt="172_1"/>
-              
-                </div>
-                <div class="notesarea">
-                  <a href="productsingle.html">
-                  <h2>Eyes Wide Shut</h2>
-                  </a>
-                  <div class="description">
-                    <p>
-                     Sed ac scelerisque ligula, ac aliquam ligula. Vivamus ut pellentesque nisi, vel com.
-                    </p>
-                  </div>
-                  <div class="notesbottom">
-                    <div class="price fleft">
-                      $7.00 
-                    </div>
-                    <div class="cart fright">
-                      <a href="#" class="edd-add-to-cart">
-                        <span class="edd-add-to-cart-label">Add to Cart</span>
-                      </a>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- .wowitemboxinner-->
+
             </div>
-            <!-- .wowitembox-->
+        
 
             
           </div>

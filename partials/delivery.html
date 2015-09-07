@@ -1,4 +1,4 @@
-<div ng-include ="partials/header.html"></div>
+<div ng-include ="'partials/header.html'"></div>
 
 <div class="boxedlayout">
 
@@ -10,22 +10,113 @@
  
  <h3>Shipping Details</h3>
 
-<form name="deliveryForm" novalidate ng-submit="deliverysubmit()" >
+
+
 <label>Selct payment mode</label>
-<select  ng-model='deliveryForm.paymode'  class=' '>
+<select  ng-model='paymode'  class=' '>
 <option selected disabled>Select Payment mode</option>
-     <option ng-value='$index'   ng-repeat='payType in paymentmode'>{{payType.Status}}</option>
+     <option ng-value='$index' ng-selected="{{payType.Status == paymentmode[0].Status}}"     ng-repeat='payType in paymentmode'>{{payType.Status}}</option>
                         </select> 
 
 <label>Selct shipping mode</label>
-<select  ng-model='deliveryForm.shipmode'  class=' '>
-	<option selected disabled>Select shippingmode mode</option>
-     <option ng-value='$index'   ng-repeat='shipType in shippingmode'>{{shipType.ModeName}}</option>
+<select  ng-model='shipmode'  class=' '>
+
+     <option  ng-selected="{{shipType.ModeName == shippingmode[0].ModeName}}"  ng-value='shipType.ModeName'   ng-repeat='shipType in shippingmode'>{{shipType.ModeName}}</option>
                         </select> 
+ 
+  <div >
+ <a class="name">{{UserInfo.FirstName}}  {{UserInfo.LastName}} </a> </br>
+<a class="street">{{UserInfo.Street1}} {{UserInfo.Street2}} </a>
+ <label>{{UserInfo.Landmark}}  </label>
+<label>{{UserInfo.City}},{{UserInfo.State}},{{UserInfo.PinCode}},{{UserInfo.Country}} </label>
+<label>{{UserInfo.MobileNO}}  </label>
+  </div>
+
+<label> Edit personal info</label>
+<input type="checkbox" ng-model="editAddress"
+           ng-true-value="true" ng-false-value="false">
+           <div  ng-show ="editAddress">
+<form name="deliveryForm" novalidate ng-submit="confirmDelivery()" >
+
+
+<h3>Personal info</h3>
+    <div class="form-group" ng-class="{ 'has-error' : deliveryForm.First_Name.$dirty && deliveryForm.First_Name.$invalid }">
+
+
+            <label>FirstName</label>
+    <input type="text"  name="First_Name" placeholder="firstname" class="form-control" ng-model="AddressInfo.FirstName" required>
+     <p ng-show="deliveryForm.First_Name.$dirty && deliveryForm.First_Name.$invalid" class="help-block">Enter firstname.</p>
+        </div>
+
+
+    <div class="form-group" ng-class="{ 'has-error' : deliveryForm.Last_Name.$dirty && deliveryForm.Last_Name.$invalid}">
+            <label>LastName</label>
+    <input type="text"  name="Last_Name" placeholder="LastName" class="form-control" ng-model="AddressInfo.LastName" required>
+     <p ng-show="deliveryForm.Last_Name.$dirty && deliveryForm.Last_Name.$invalid" class="help-block">Enter LastName.</p>
+        </div>
+    <div class="form-group" ng-class="{ 'has-error' : deliveryForm.Street1.$dirty && deliveryForm.Street1.$invalid}">
+            <label>Street1</label>
+    <input type="text"  name="Street1" placeholder="Street1" class="form-control" ng-model="AddressInfo.Street1" required>
+     <p ng-show="deliveryForm.Street1.$dirty && deliveryForm.Street1.$invalid" class="help-block">Enter Street1.</p>
+        </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : deliveryForm.Street2.$dirty && deliveryForm.Street2.$invalid}" >
+            <label>Street2</label>
+    <input type="text"  name="Street2" placeholder="Street2" class="form-control" ng-model="AddressInfo.Street2" required>
+     <p ng-show="deliveryForm.Street2.$dirty && deliveryForm.Street2.$invalid" class="help-block">Enter Street2.</p>
+        </div>
+
+             <div class="form-group" ng-class="{ 'has-error' : deliveryForm.LandMark.$dirty && deliveryForm.LandMark.$invalid}" >
+            <label>Landmark</label>
+    <input type="text"  name="LandMark" placeholder="Landmark" class="form-control" ng-model="AddressInfo.LandMark" required>
+     <p ng-show="deliveryForm.LandMark.$dirty && deliveryForm.LandMark.$invalid" class="help-block">Enter Landmark.</p>
+        </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : deliveryForm.City.$dirty && deliveryForm.City.$invalid}" >
+            <label>City</label>
+    <input type="text"  name="City" placeholder="City" class="form-control" ng-model="AddressInfo.City" required>
+     <p ng-show="deliveryForm.City.$dirty && deliveryForm.City.$invalid" class="help-block">Enter City.</p>
+        </div>
+
+           <div class="form-group" ng-class="{ 'has-error' : deliveryForm.State.$dirty && deliveryForm.State.$invalid}" >
+            <label>State</label>
+    <input type="text"  name="State" placeholder="State" class="form-control" ng-model="AddressInfo.State" required>
+     <p ng-show="deliveryForm.State.$dirty && deliveryForm.State.$invalid" class="help-block">Enter State.</p>
+        </div>
+
+           <div class="form-group"  ng-class="{ 'has-error' : deliveryForm.Country.$dirty && deliveryForm.Country.$invalid}">
+            <label>Country</label>
+    <input type="text"  name="Country" placeholder="Country" class="form-control" ng-model="AddressInfo.Country" required>
+     <p ng-show="deliveryForm.Country.$dirty && deliveryForm.Country.$invalid" class="help-block">Enter Country.</p>
+        </div>
+
+         <div class="form-group"  ng-class="{ 'has-error' : deliveryForm.PinCode.$dirty && deliveryForm.PinCode.$invalid}">
+            <label>PinCode</label>
+    <input type="text"  name="PinCode" placeholder="PinCode" class="form-control" ng-model="AddressInfo.PinCode" required>
+     <p ng-show="deliveryForm.PinCode.$dirty && deliveryForm.PinCode.$invalid" class="help-block">Enter PinCode.</p>
+        </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : deliveryForm.MobileNo.$dirty && deliveryForm.MobileNo.$invalid}" >
+            <label>MobileNo</label>
+    <input type="text"  name="MobileNo" placeholder="MobileNo" class="form-control" ng-model="AddressInfo.MobileNo" required>
+     <p ng-show="deliveryForm.MobileNo.$dirty && deliveryForm.MobileNo.$invalid" class="help-block">Enter MobileNO.</p>
+        </div>
+
+
+
+
+
+
+<input ng-disabled="deliveryForm.$invalid"  class="fright" type="submit" value="confirm delivery">
 
 
 
 	</form>
+    </div>
+
+
+<input ng-hide ="editAddress" ng-click="confirmDelivery()"   class="fright" type="submit" value="confirm delivery">
+
 
 </div>
 
@@ -33,8 +124,47 @@
 <div class='column2'>
 <h3>Product Details</h3>
 
+    <div class="form-group" >
+ 
+            <input ng-model="promocode"  style="width:40%; margin: 10px 10px;" type="text" placeholder="Promo code" class="form-control column2" >
+
+           <input  style="width:40%;" ng-click="promoCode()"   class="column2" type="submit" value="Apply">
+          
+        </div>
+<div  style="clear:both" class="fleft">
+   Cart Total:{{total}}
+</div>
+     
+<div class="fright">
+    <p>Total number of products:<span> {{cartList.itemsLength}}</span></p>
+
+</div>
+    <ul  style="clear:both" class="row cleardiv ulTable tabheader" ng-init="intializeCart()">
+  <li class="col-md-1">Si.no</li>
+  <li class="col-md-2">Name</li>
+  <li class="col-md-2">Image</li>
+  <li class="col-md-2">single Price</li>
+  <li class="col-md-2">Qty</li>
+  <li class="col-md-2">Price</li>
+
+</ul>
+
+    <ul class="row cleardiv ulTable" ng-repeat="cartitem in cartList.items track by $index">
+
+
+  <li class="col-md-1">{{$index + 1}}</li>
+  <li class="col-md-2">{{cartitem.ProductName}}</li>
+ <li class="col-md-2"><img width="55" height="37" ng-src="{{domainurl}}{{cartitem.ImageUrl}}" fallback-src="img/default.png" loading-src="img/default.png" class="attachment-post-thumbnail wp-post-image" alt="163_1"/></li>
+    <li class="col-md-2">{{cartitem.Price}}</li>
+ <li class="col-md-2" ><input type="text" class="qty" placeholder="qty" ng-model="cartitem.Quantity" value="cartitem.Quantity" ng-if="cartitem.Quantity != null"></input> <input type="text" class="qty" placeholder="qtysdf" ng-model="cartitem.Quantity" value="1" ng-if="cartitem.Quantity == null"></input></li>
+<li ng-if='cartitem.Quantity != null && cartitem.Quantity != ""'class="col-md-2"  >{{cartitem.Quantity * cartitem.Price}}</li>
+<li ng-if='cartitem.Quantity == null || cartitem.Quantity == ""'class="col-md-2"  >Please enter quantity</li>
+    </ul>
+
+
 </div>
 
 
 </div>
 
+	<div style="clear:both" ng-include ="'partials/footer.html'"></div>

@@ -40,7 +40,7 @@ a, a:focus, a:active {text-decoration:none;}
 h1 {
 }
 h1 strong {
-	font-weight:900;
+	font-weight:400;
 }
 h2 {
 		line-height:20px;
@@ -48,17 +48,17 @@ h2 {
 }
 h3 {
 	font-size:18px;
-	font-weight:700;
+	font-weight:400;
 }
 h4 {
 }
 h5 {
-		font-weight:700;
+		font-weight:400;
 	line-height:20px;
 }
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
-	font-weight:700;
+	font-weight:400;
 }
 p.intro {
 	font-size:16px;
@@ -66,11 +66,11 @@ p.intro {
 	line-height:24px;
 }
 a {
-	color:#25c5ed;
+	    color: #6a402f;
 }
 a:hover {
 	text-decoration:none;
-	color:#25c5ed;
+	    color: #A38D50;
 }
 a:focus,input:focus,button:focus,.btn:focus,a:active,input:active,button:active,.btn:active {
 }
@@ -111,7 +111,7 @@ input,select,textarea {
 input[type=submit] ,.addToCart{
 	background-color:#b50000;
 	color:#fff;
-	padding:7px 20px;
+	    padding:6px 10px 6px 10px;
 	margin-top:10px;
 	display:inline-block;
 	border:1px solid rgba(0,0,0,0.1);
@@ -120,7 +120,7 @@ input[type=submit] ,.addToCart{
 
 }
 .productsMain{
-	width: 80%;
+	width: 100%;
 
 }
 body p {
@@ -128,13 +128,16 @@ body p {
 	padding: 0px;
 }
 .cart .addToCart{
-	margin: 0px;
-	border-radius: 15px;
-	background-color: #fff;
+    margin: 0px;
+    /* border-radius: 15px; */
+    background-color: #fff;
     color: #b50000;
     border: 1px solid #b50000;
-      width: 107px;
-  height: 36px;
+    width: 81px;
+        height: 25px;
+    padding: 0px 2px 0px 2px;
+    font-size: 12px;
+
 
 } 
 
@@ -151,6 +154,20 @@ label {
 .boxedlayout{
 	height: 100%;
 }
+
+ .nav>.headeraccount{
+	        margin-left: 53%;
+	        line-height: 0px;
+}
+
+ .nav>.useraccount{
+ 	    margin-left: 20%;
+ 	    line-height: 0px;
+ }
+
+ .nav>.useraccount a, .nav>.headeraccount , .nav>..signoutaccount {
+ 	line-height: 0px;
+ }
 /* -------------------------------------------------------------------------------- */
 /*	Navigation/* -------------------------------------------------------------------------------- */
 #wow-menu {
@@ -168,13 +185,13 @@ label {
 	text-transform:uppercase;
 	font-size:22px;
 	color:#444;
-	font-weight:800;
+	font-weight:400;
 	padding: 0px;
 }
 #wow-menu.navbar-default .navbar-nav>li>a {
 
 	font-size:12px;
-	font-weight:700;
+	font-weight:400;
 }
 #wow-menu.navbar-default .navbar-nav>li>a:hover{
 
@@ -189,7 +206,7 @@ label {
 .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus {
 	color:#25c5ed;
 	background-color:transparent;
-	font-weight:700;
+	font-weight:400;
 }
 .navbar-toggle {
 	border-radius:0;
@@ -246,7 +263,7 @@ li.checkoutmenu {
 	border:#25c5ed 1px solid;
 	padding:4px 10px;
 	font-size:13px;
-	font-weight:700;
+	font-weight:400;
 	display: none
 }
 /*==============================================* STILL MENU...*===============================================*/
@@ -375,7 +392,7 @@ li.checkoutmenu {
 	padding:10px 25px;
 	font-size:14px;
 	color:#fff;
-	font-weight:300;
+	font-weight:400;
 	letter-spacing:1px;
 	display:inline-block;
 }
@@ -395,7 +412,7 @@ li.checkoutmenu {
 	position:relative;
 	margin-top:80px;
 	float: right;
-	height: 380px;
+	height: 280px;
 
 }
 .headerimage p.lead {
@@ -421,14 +438,14 @@ li.checkoutmenu {
 	color:#fff;
 	margin-top:0;
 	margin-bottom:0;
-	font-weight:600;
+	font-weight:400;
 	font-size:20px;
 	text-transform:uppercase;
 }
 .headerimage h1 span {
 }
 .headercontent {
-	font-weight:800;
+	font-weight:400;
 	z-index:2;
 	position:relative;
 	color:#fff;
@@ -446,24 +463,24 @@ li.checkoutmenu {
 	
 }
 .headercontent.home h1 {
-	font-size:60px;
+	font-size:40px;
 	margin-bottom:10px;
-	font-weight: 800;
+	font-weight: 400;
 }
 /* -------------------------------------------------------------------------------- */
 /*	 Shop Product Box/* -------------------------------------------------------------------------------- */
 
 .wowitembox {
-    width: 31%;
+    width: 208px;
     /* padding: 0 15px 30px 15px; */
     overflow: hidden;
     float: left;
-    height: 290px;
+    height: 280px;
     border: 1px solid #ccc;
     margin: 0px 20px 20px 0px;
-    -webkit-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
+/*    -webkit-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
     -moz-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
-    box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
+    box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);*/
     position: relative;
     padding-top: 20px;
 }
@@ -471,7 +488,7 @@ li.checkoutmenu {
 padding: 0px;
 }
 .shopmore .wowitemboxinner .notesarea{
-	width: 50%;
+	width: 60%;
 }
 
 .wowitemboxinner {
@@ -485,7 +502,7 @@ padding: 0px;
 .wowitemboxinner h2 {
   margin: 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: lowercase;
   text-align: left;
   height: 20px;
@@ -504,6 +521,10 @@ padding: 0px;
 		margin-top:0;
 	font-weight:400;
 
+}
+
+.wowitemboxinner .notesarea .notesbottom {
+	clear: both;
 }
 .wowitemboxinner .edd-submit.button {
 	border:0;
@@ -663,7 +684,7 @@ height: 100px;
 	display:block;
 	font-size:100%;
 	line-height:1;
-	font-weight:700;
+	font-weight:400;
 	width:100%;
 	margin:0 0 21px;
 	padding:0;
@@ -694,7 +715,7 @@ table#edd_purchase_receipt,table#edd_purchase_receipt_products {
 #edd_profile_editor_form legend {
 	padding-left:0;
 	color:#444;
-	font-weight:700;
+	font-weight:400;
 	font-size:0.9em;
 	padding-bottom:10px;
 	border-bottom:1px solid #eee;
@@ -743,7 +764,7 @@ table#edd_purchase_receipt,table#edd_purchase_receipt_products {
 	line-height:40px;
 	text-align:center;
 	display:inline-block;
-	font-weight:700;
+	font-weight:400;
 	margin-right:5px;
 	border:1px solid rgba(0,0,0,.1);
 }
@@ -753,7 +774,7 @@ table#edd_purchase_receipt,table#edd_purchase_receipt_products {
 	line-height:40px;
 	text-align:center;
 	display:inline-block;
-	font-weight:700;
+	font-weight:400;
 	color:#333;
 	border:1px solid #ddd;
 	margin-right:5px;
@@ -773,7 +794,7 @@ table#edd_purchase_receipt,table#edd_purchase_receipt_products {
 }
 h2.maintitle,h1.maintitle {
 	margin-bottom:10px;
-	font-weight:800;
+	font-weight:400;
 	margin-top:40px;
 }
 .seactionitemfeatures h2.maintitle {
@@ -787,8 +808,9 @@ h2.maintitle {
     background-color: #ccc;
     text-align: left;
     padding: 10px;
+    margin:10px 0px; 
 color: #53382f;
-font-weight: 600;
+font-weight: 400;
     padding-left: 24px;
 }
 .separatr {
@@ -827,7 +849,7 @@ font-weight: 600;
 .featurebox h2 {
 	font-size:16px;
 	margin-bottom:6px;
-	font-weight:600;
+	font-weight:400;
 	margin-top:0;
 }
 .featurebox i {
@@ -837,7 +859,7 @@ font-weight: 600;
 	line-height:50px;
 	text-align:center;
 	border-radius:50%;
-	font-weight:800;
+	font-weight:400;
 	font-size:23px;
 	border: 1px solid #ddd;
 }
@@ -945,7 +967,7 @@ form.wowsortitems {
 .templatemyaccount span.smalltitle {
 	font-size:15px;
 	text-transform:uppercase;
-	font-weight:700;
+	font-weight:400;
 	margin-bottom:10px;
 	display:block;
 	color:#333;
@@ -994,7 +1016,7 @@ form.wowsortitems {
 	display:inline-block;
 	text-align:center;
 	vertical-align:middle;
-	font-weight:700;
+	font-weight:400;
 	color:#333;
 	margin-left:1.3%;
 	float:left;
@@ -1026,7 +1048,7 @@ form.wowsortitems {
 	margin-top:-5px;
 	font-size:20px;
 	line-height:1.2;
-	font-weight:800;
+	font-weight:400;
 }
 .singledownloadphp ul {
 	padding-left:20px;
@@ -1154,7 +1176,7 @@ ul.related-entries li .relatedinner .edd-the-price {
 ul.related-entries li .relatedinner a.related-entry-title {
 	padding:0px 20px 10px;
 	display:block;
-	font-weight:700;
+	font-weight:400;
 	color:#333;
 	font-size:14px;
 	text-transform:uppercase;
@@ -1213,7 +1235,7 @@ ul {
 }
 h2.post-title {
 	padding-bottom:17px;
-	font-weight:700;
+	font-weight:400;
 	font-size:22px;
 }
 .excerpttext h2.post-title {
@@ -1221,7 +1243,7 @@ h2.post-title {
 	font-size:20px;
 	line-height:1.2;
 	padding-bottom:20px;
-	font-weight:700;
+	font-weight:400;
 }
 .excerpttext .readmore {
 	border:1px solid rgba(0,0,0,0.1);
@@ -1249,7 +1271,7 @@ h2.post-title {
 	max-width:100%;
 }
 .post-content .wp-caption-text {
-	font-weight:600;
+	font-weight:400;
 }
 .post-content .wp-caption {
 	padding:5px;
@@ -1455,7 +1477,7 @@ ul.edd-taxonomy-widget li a:before {
 }
 .widget-title {
 		font-size:0.9em;
-	font-weight:700;
+	font-weight:400;
 	text-transform:uppercase;
 	margin-bottom:20px;
 }
@@ -1526,7 +1548,7 @@ ul.edd-taxonomy-widget li a:before {
 	z-index:10;
 	position:relative;
 	padding:10px 15px;
-	font-weight:700;
+	font-weight:400;
 }
 .widget .section-title:after {
 	content:' ';
@@ -1707,6 +1729,7 @@ h3.comments-title {
 #respond input[type=submit]:hover {
 	background-color:#333;
 	color:#fff;
+	
 }
 .form-allowed-tags {
 	display:none;
@@ -1717,7 +1740,7 @@ h3.comments-title {
 #comments label {
 	margin-bottom:5px;
 	text-transform:uppercase;
-	font-weight:700;
+	font-weight:400;
 	display:block;
 }
 #comments li.pingback {
@@ -1773,12 +1796,12 @@ select{
 
 input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],textarea,select {
 	display:inline-block;
-	padding:7px 10px;
+	    padding: 3px 10px;
 	width:100%;
 	outline:none;
 	border-width:1px;
 	border-style:solid;
-	border-color:#eee;
+	border-color:#777;
 	background-color:transparent;
 	color:#777;
 	font-size:12px;
@@ -1929,15 +1952,15 @@ footer.themefooter h3.widget-title {
     border-bottom: 2px solid rgba(250,244,221,0.9);
     margin-bottom: 20px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
     padding-top: 0px;
     margin-top: 0px;
-    line-height: 70px;
+    line-height: 40px;
 }
 
 .footer-headerimg
-{width: 30%;
+{width: 20%;
 
 	}
 
@@ -2008,7 +2031,7 @@ ul.footermenu li a:hover {
 	position:relative;
 	z-index:1;
 	font-size:18px;
-	font-weight:300;
+	font-weight:400;
 }
 .actionbeforefooter a.actionbutton {
 		border:1px solid #fff;
@@ -2017,7 +2040,7 @@ ul.footermenu li a:hover {
 	margin-left:5px;
 	text-transform:uppercase;
 	font-size:14px;
-	font-weight:700;
+	font-weight:400;
 }
 .actionbeforefooter a.actionbutton:hover {
 	border:1px solid #eee;
@@ -2229,6 +2252,7 @@ ul.social-icons-footer li {
 
   z-index: 999;
   display: none;
+      height: 2000px;
 
 
 }
@@ -2298,16 +2322,23 @@ height: 300px;
 		margin:0px;
 }
 
-
+.singleOffer .offerproducts .wowitembox{
+    height: 194px;
+        width: 197px;
+}
 
 .cartblock{
   position: absolute;
-  top: 20px;
-  right: 18%;
-  font-size: 15px;
+  top: 14px;
+  right: 0%;
+  font-size: 12px;
   color: #fff;
     cursor: pointer;
   width: 125px;
+}
+
+.cartblock a{
+	color: #fff;  
 }
 .cartblock .fa-shopping-cart{
 	font-size: 30px;
@@ -2321,25 +2352,27 @@ h2.tamilName{
  text-decoration: line-through;
  margin: 0px;
  float: left;
- font-size: 20px;
+ font-size: 12px;
 }
 
 .amount{
 	float: left;
 	margin-left: 10px;
-	font-size: 22px;
+	font-size: 12px;
 }
 
 .cart{
 	overflow: hidden;
-  clear: both;
+    /* clear: both; */
+    float: right;
+    /* margin-left: 11px; */
 }
 input[type="text"].qty{
   width: 40px;
   height: 30px;
   border: 1px solid #000;
   font-weight: bold;
-  margin:0px 10px 0px 4px;
+  margin:0px 0px 0px 4px;
 }
 
 .price:hover, span.cart:hover {
@@ -2529,20 +2562,39 @@ clear: both;
 }
 
 .checkout{
-	width: 100px;
-	height: 35px;
+width: 100px;
+    height: 35px;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #b50000;
+    color: #b50000;
+    background-color: #fff;
+    color: #b50000;
+    display: inline-block;
+}
+
+.checkout:hover{
+	  background-color: #b50000;
+    color: #fff;
+}
+
+.checkout:active{
+	 background-color: #CC1A1A;
+	  color: #fff;
 }
 .featureItems{
 	    overflow: hidden;
        margin: 0 2%;
     width: 100%;
+    cursor: pointer;
 }
-.featureItems{
-
+.featureItems .wowitembox{
+    width: 30%;
 }
 .featureItems .wowitemboxinner .imagearea img{
 width: 100%;
 margin: 0;
+  height: 110px;
 }
 
 .featureItems .wowitemboxinner .imagearea{
@@ -2557,20 +2609,28 @@ margin: 0;
 }
 
 .wowitemboxinner .groupSelectbox{
-	display: block;
-	     width: 30%;
-    margin-right: 6%;
+	    display: block;
+    width: 40%;
+    margin: 0 0px 5px 0px;
+    height: 25px;
 }
 
 .wowitemboxinner .qtycont{
-    margin-top: 6px;
+        margin-bottom: 20px;
 }
 
-.wowitemboxinner .prodname
+.wowitemboxinner .prodname 
 {display: block;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;}
+    color: #6a402f;
+font-size: .96em;
+    font-weight: 400;
+text-align: center;
+cursor: pointer;
+}
+
+.wowitemboxinner .prodname:hover{
+	    color: #A38D50;
+}
 
  #showpopup{
  	display: none;
@@ -2627,29 +2687,35 @@ background-color: #b50000;
     margin: 0 2%;
 }
 .shopmore .wowitemboxinner .moreimage {
-    position: relative;
+       position: relative;
     overflow: hidden;
-    width: 50%;
-      height: 150px;
+    width: 40%;
+    height: 100%;
     margin-bottom: -1px;
     /* margin: 10%; */
-   margin: 5% 0%;
-        float: left;
+    margin: 0% 0%;
+    float: left;
 }
-
+.shopmore .wowitemboxinner {
+height: 100%;
+}
 .shopmore .wowitemboxinner .moreimage img{
     float: left;
     width: 100%;
 
 }
+
+.shopmore .cart{
+  height: 40px;
+}
 .shopmore .wowitembox{
-	   width: 31%;
-    /* padding: 0 15px 30px 15px; */
+	   width: 46%;
+     padding: 10px 10px; 
     overflow: hidden;
     float: left;
-    height: 170px;
+    height: 220px;
     border: 1px solid #ccc;
-    margin: 0px 10px 10px 0px;
+    margin: 0px 20px 10px 0px;
     -webkit-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
     -moz-box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
     box-shadow: 10px 13px 169px -62px rgba(15,0,0,1);
@@ -2660,11 +2726,12 @@ background-color: #b50000;
 #menu-top.nav.navbar-nav {
     position: absolute;
     top: 20px;
-    right: 3%;
+    right: 0%;
     font-size: 15px;
     color: #fff;
     cursor: pointer;
-    width: 200px;
+        width: 233px;
+    margin-top: 15px;
 }
 
 
@@ -2680,6 +2747,42 @@ background-color: #b50000;
 
 .border-right{
 	border-right: 1px solid #ccc;
+}
+
+.offerproducts{
+	overflow: hidden;
+}
+
+.offerproducts .wowitembox{
+	padding: 0px;
+	    height: 170px;
+}
+.offerproducts .wowitemboxinner{
+	margin-top: -10px;
+}
+.wowitemboxinner .imagearea{
+	height: 100px;
+}
+
+.offerproducts .wowitemboxinner .imagearea img{
+	    width: 80%;
+    margin: 0 8%;
+
+}
+
+.featureItems .wowitemboxinner h4{
+	margin: 10px 10px;
+}
+
+.carousel-inner>.item>img{
+	    width: 100%;
+    height: 290px;
+}
+.carousel {
+    position: relative;
+    float: left;
+    width: 80%;
+    margin-top: 80px;
 }
 
 /*.cartblock:hover .cartList,.cartList:hover{

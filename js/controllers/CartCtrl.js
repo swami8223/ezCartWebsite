@@ -25,6 +25,10 @@ CartProduct.ProductList = $scope.cartList.items
 $scope.addTocartSucess = function(data){
 
 console.log(data);
+cartFactory.setserverCartDetails(data.Cart)
+
+
+
 	$location.path('/delivery');
 	 	if(!$scope.$$phase) {
   //$digest or $apply

@@ -17,7 +17,7 @@
         <!-- Menu -->
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse" >
 <p class="searchSpace col-md-3 fright">
-      <input type="text" name="" class="ng-pristine ng-valid" title="" value="" ng-model="searchText" placeholder="search in below items">
+      <input type="text" name="" class="ng-pristine ng-valid" title="" value="" ng-model="searchText" placeholder="search chocolates">
                     <input class="search" type="submit" value="Search">
                       </p>
         </div>
@@ -33,9 +33,9 @@
                 </div>
 
                           <ul id="menu-top" class="nav navbar-nav " ng-init="checklogin()">
-            <li ng-if="loggedin == false"><a ng-click="navtoLogin()">signin/account</a></li>
-            <li ng-if="loggedin == true && userName != false"><a ng-click="navtouserProfile()">{{userName}}+</a></li>
-             <li ng-if="loggedin == true && userName != false"><a ng-click="signout()">SignOut</a></li>
+            <li class="headeraccount" ng-if="loggedin == false"><a  ng-click="navtoLogin()">signin/account</a></li>
+            <li class="useraccount" ng-if="loggedin == true && userName != false"><a  ng-click="navtouserProfile()">{{userName}}+</a></li>
+             <li class="signoutaccount" ng-if="loggedin == true && userName != false"><a  ng-click="signout()">SignOut</a></li>
            
 
           </ul>

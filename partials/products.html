@@ -94,7 +94,8 @@
 	<a ng-hide="products.selectID" class='prodname' ng-click="viewProduct(products[0])" title="{{products[0].GroupName}}">
 									{{products[0].GroupName}}<!-- 	<h2 class="tamilName" ng-if="products.ProductName != products.TamilName" >
 										{{products.TamilName}}</h2> -->
-				<div>						</a>
+											</a>
+				<div>					
 
 <select  ng-model='products.selectID' ng-show='products.length > 1' class='groupSelectbox fleft'>
      <option ng-value='$index'  ng-selected="{{items.ProductName== products[0].ProductName}}" ng-repeat='items in products'>{{items.UnitName}}</option>
@@ -103,7 +104,7 @@
  <div ng-if="products[0].IsStockAvailable == 'y' || products[0].IsStockAvailable == 'Y'"  class="edd-add-to-cart qtycont">
 												
 		<p class="fright qtycont">
-					<label>Qty</label><input type="text" class="qty" placeholder="1" value='2' ng-model="products[0].Quantity"></input>
+					<label>Qty</label><input type="text" class="qty" placeholder="1" value='1' ng-model="products[0].Quantity"></input>
 						</p>
 
 					</div>
@@ -143,7 +144,7 @@
 
 <input ng-if='products.length == 1'  ng-click="addtoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
 		
-<input ng-if='products.length > 1'  ng-click="addgrouptoCart(products,$event)" class="addToCart" type="submit" value="Add To2 Cart">
+<input ng-if='products.length > 1'  ng-click="addgrouptoCart(products,$event)" class="addToCart" type="submit" value="Add To Cart">
 		
 
                                            

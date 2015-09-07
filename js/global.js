@@ -174,6 +174,32 @@ console.log(formdata)
  return formdata;
 }
 
+function deliveryformParse (data){
+
+var formdata = '';
+$.each(data,function(key,value){
+
+    if(typeof value == 'object'){
+
+   $.each(value,function(innerkey,innervalue){
+
+     formdata += key+'.'+innerkey+'='+innervalue+"&";
+
+   })
+
+    }else{
+
+
+       formdata += key +'='+ value +'&'; 
+    }
+
+});
+console.log(formdata)
+ return formdata;
+
+}
+
+
 
 $(document).ready( function() {
 

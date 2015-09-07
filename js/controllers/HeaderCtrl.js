@@ -27,7 +27,8 @@ $scope.sucessUser = function(userData){
            
 	}else{
 		$scope.loggedin = true;
-		$scope.userName = userData.Information.UserInfo.FirstName
+		userfactory.userInfo = userData.Information.UserInfo;
+		$scope.userName = userData.Information.UserInfo.FirstName;
 		 	if(!$scope.$$phase) {
   //$digest or $apply
   $scope.$apply();
@@ -81,5 +82,15 @@ $scope.cartItemTotal = cartFactory.getcartLength();
  
 
 });
+
+
+$rootScope.$on("offerupdated",function(e,product){
+
+$scope.cartItemTotal = cartFactory.getcartLength();
+ 
+
+});
+
+
 				
 				}]) ;

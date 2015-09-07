@@ -41,7 +41,14 @@ $scope.userloginSucess = function(data){
 // userfactory.userInfo = data.Information.UserInfo ;
 // userfactory.loginUser(data.Information.UserInfo )
  userfactory.loginuser(data)
- if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
+ if(cacheFactory.backurl == '/login'){
+$location.path('/cart');
+ 	if(!$scope.$$phase) {
+  //$digest or $apply
+  $scope.$apply();
+}
+ }
+ else if(cacheFactory.backurl != undefined && cacheFactory.backurl != false){
  	$location.path(cacheFactory.backurl);
 
  	if(!$scope.$$phase) {

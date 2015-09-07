@@ -1,0 +1,82 @@
+         
+<div ng-controller='SpecialOffer'>
+
+  <div class="featureItems wowitemboxlist sectionlatestitems clear"  ng-init= 'getOffers()'>
+          
+            <div class="wowitembox" ng-repeat='offer in offers'>
+              <div class="wowitemboxinner" >
+                <h4>{{offer.OfferName}}</h4>
+                <div class="imagearea" ng-click="getOfferbyId(offer,$event)">
+                   <img width="555" height="370" ng-src="{{domainurl}}{{offer.ImageUrl}}" fallback-src="img/noimage.png" loading-src="img/loading.gif" class="wp-post-image"alt="163_1"/>
+
+
+        
+     
+                </div>
+
+
+
+              </div>
+              <!-- .wowitemboxinner-->
+            </div>
+            <!-- .wowitembox-->
+            
+   
+
+            
+          </div>
+          <!-- .wowitemboxlist-->
+
+
+<div class="popup offerpopUp singleOffer" ng-show='singleOffer != undefined || singleOffer != ""'>
+<div class="backdrop" ng-click="closeOffer()"></div>
+
+<div class="popupContainer">
+  <span class="close" ng-click="closeOffer()"></span>
+<div class="col-md-12 description">
+
+  <h2>
+  {{singleOfferName}}</h2>
+
+
+<h3>Products in Offer</h3>
+
+<ul class='offerproducts'>
+<li ng-repeat='product in singleOffer.OfferProducts ' class='wowitembox productId1'>
+  <div class='wowitemboxinner'>
+    <div class='imagearea'> 
+ <img ng-src="{{domainurl}}{{singleOfferImage}}">
+    </div>
+
+<div class='notesarea'>
+<p class='offerproductname'>{{product.ProductName}} </p>
+<p class='offerproductqty'>Quantity {{product.Quantity}}</p>
+<p class='offerproductprice'>Price {{product.OfferPrice}} &#8360;</p>
+
+</div>
+
+  </div>
+
+
+</li>
+</ul>
+<div>
+
+<div>Total offer price {{singleOffer.Quantity * singleOffer.total}} &#8360;</div>
+
+  <label>Qty</label><input type="text" class="qty" placeholder="1" value='1'  ng-model="singleOffer.Quantity"></input>
+<input ng-click="addOffertoCart(offer,$event)"  class="wysija-submit wysija-submit-field edd-add-to-cart" type="submit" value="Add to Cart">
+<div>
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+</div>

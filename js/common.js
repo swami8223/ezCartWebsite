@@ -47,5 +47,10 @@ var getUserInfo = 'Credential/GetInfo';
 var signout = 'Credential/SignOut';
 var paymode = 'Invoice/GetInvoicePayMode';
 var shipmode = 'Invoice/GetInvoiceShippingMode';
+var delivery = "Invoice/CreateInvoiceFrmSCart";
+var promocode = "Discount/ValidatePromoCode";
+var getspecialOffer = 'Offer/AdminGetOfferNameList';
+var getOfferById = 'Offer/GetOfferById';
+var getNewProduct = 'Product/GetNewProductList';
 
 

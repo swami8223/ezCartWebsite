@@ -2,6 +2,7 @@
 #wow-menu.navbar-default {
     background: #461c20 !important;
         border-radius: 10px;
+        width: 960px;
 }
 
 .partial-menu{
@@ -17,9 +18,9 @@
 #listiingPage .shopCategory {
     color: #fff;
     text-align: center;
-     padding: 1% 2%;
+     padding:6px 10px 6px 24px;
     background: url(../../img/verticalnav_sprite.png) no-repeat scroll 0% -69px #462616;
-    /* background-size: 11%; */
+     background-size: 11%; 
     /* background-position: 10px; */
     font-size: 14px;
     text-align: left;
@@ -28,7 +29,7 @@
 .navbar-default .navbar-collapse{
 background: #78422b;
     width: 65%;
-    margin: 0 12%;
+        margin: 0 16%;
     padding: 17px 0px;
 
 }
@@ -48,21 +49,32 @@ header .searchSpace input[type="text"]{
     background-color: #f1e9d4;
     padding: 3px 8px;
     margin-top:7px;
-    border-radius: 10px;
+        border-radius: 5px;
 }
 
 header .searchSpace input[type="submit"] {
-     float: left;
-    width: 11%;
+    float: left;
+    width: 13%;
     margin: 0px;
-    margin-top: 9px;
-    border-radius: 10px;
-    margin-left: -10px;
-    padding: 4px 10px;
+    margin-top: 6px;
+    /* border-radius: 10px; */
+    margin-left: -13px;
+        padding: 8px 10px 6px 10px;
     background: #461c20;
 }
 .search :hover {
 	border: 0px;
 	color: #f1e9d4 !important;
+  font-size: inherit;
+}
 
+input[type=submit]:active,input[type=submit]:hover{
+
+       background-color: #b50000;
+    color: #fff;
+      display: inline-block;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    text-transform: lowercase;
+    font-size: inherit;
 }
